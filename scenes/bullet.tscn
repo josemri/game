@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=4 uid="uid://bk6b4ra544etm"]
+
+[ext_resource type="Texture2D" uid="uid://bhsuw3nujj3md" path="res://assets/gun/gun_9mm.jpg" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://j3he28ff1ajv" path="res://scripts/bullet.gd" id="1_y25gk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7sus"]
+resource_name = "Material.031"
+cull_mode = 2
+albedo_texture = ExtResource("1_mkf8s")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_l5glv"]
+_surfaces = [{
+"aabb": AABB(0.377025, -0.045276, -1.26593, 0.090552, 0.090552, 0.269363),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAQAEAAIAAwACAAQAAQAFAAQAAwAEAAYABwAEAAUABwAGAAQACAAHAAUACAAGAAcACAAFAAEACAADAAYAAAAJAAEACQAIAAEAAAADAAoACQAAAAoACgADAAgACQALAAgACgAIAAsACQAKAAsA"),
+"name": "Material.031",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("////f///AAD/f///NlMAAP///382UwAA/38AADZTAACzyv9/AAAAAP9/BscAAAAA/3/4OAAAAABKNf9/AAAAAAAA/382UwAA/3//////AAD/fwAA//8AAAAA/3///wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_y25gk"]
+resource_name = "gun_9MM_005"
+_surfaces = [{
+"aabb": AABB(0.377025, -0.045276, -1.26593, 0.090552, 0.090552, 0.269363),
+"attribute_data": PackedByteArray("soZkxo5we22yhnttjnBkxmwq1ZIAKcPEVRArqg5Dza2OcGTGalp7bY5we21qWmTG7HCTUh96FjSVhNBS7HAWNChhk1LscBY07HCTUrhnFjSyhmTGjnB7bY5wZMayhnttjnBkxmpae21qWmTGjnB7bexwk1IfehY07HAWNJWE0FIoYZNS7HAWNLhnFjTscJNSZW2RNEV2yUO6aRFAuXn+Nw=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUA"),
+"material": SubResource("StandardMaterial3D_x7sus"),
+"name": "Material.031",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("////f////MX/f///NlP8xf///382U/zF/3///////MX/f//////0gv9/AAD///SCAAD/f///p4L///9///9Bg/9///////zFAAD/fzZT/MX/f///NlP8xQAA/3////zF/3///zZTTsuzyv9/AABfy////382U0LL/38GxwAAccsAAP9/NlNoy/9/BscAAGzL/3///zZTZctKNf9/AABxy////3///wI6/38AADZTAjr/fwAA//8COv///382UwI6/38AAP//AjoAAP9/NlMCOgAA/3///wI6/38AADZTAjr/fwAANlOwNLPK/38AAJ80/3/4OAAAjTT///9/NlO8NAAA/382U5Y0/3/4OAAAkjRKNf9/AACNNP9/AAA2U5k0SjX/fwAA//+zyv9/AAD///9/BscAAP///3/4OAAA//8AxgBjAMYAYwDGAGMAxgBj///////////////////////i/bn/4v25/+L9uf/i/bm2yOhhw8gcYq3Iw2HQyFViN+I0t0XiMbct4je3VOItt/8cAUb/HAFG/xwBRv8cAUb+Of6c/jn+nP45/pz+Of6cFh62SOIdw0iqHdFIPB6tSDU3xp0xN7mdLjepnTc30J2l0KVQpdClUB7QH1As0SxR")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_l5glv")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l5glv"]
+radius = 0.0680363
+
+[node name="bullet3D" type="Area3D"]
+top_level = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_y25gk")
+
+[node name="9MM_002" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.247591, 0, 0, 0, 0.247591, 0, 0, 0, 0.247591, -0.108233, 0, 0.281372)
+layers = 2
+mesh = SubResource("ArrayMesh_y25gk")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.344184, 0, 0, 0, 0.344184, 0, 0, 0, 0.344184, 0, 0, -0.0190301)
+shape = SubResource("SphereShape3D_l5glv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
