@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bv555knfwyuyw"]
+
+[ext_resource type="PackedScene" uid="uid://dcuxqy6cuxal4" path="res://assets/menu/map/menu.glb" id="1_vgm8u"]
+
+[node name="menu" unique_id=1860326511 instance=ExtResource("1_vgm8u")]
+
+[node name="Radio_01" parent="." index="1547" unique_id=1773916600]
+visible = false
+
+[node name="Phone_001" parent="." index="1549" unique_id=932139539]
+visible = false
+
+[node name="Books_007_001" parent="." index="1583" unique_id=1625772662]
+visible = false
+
+[node name="Books_006_001" parent="." index="1584" unique_id=1286924767]
+visible = false
+
+[node name="Books_005_001" parent="." index="1585" unique_id=1808971891]
+visible = false
+
+[node name="Books_004_001" parent="." index="1587" unique_id=2054682191]
+visible = false
+
+[node name="Books_003_001" parent="." index="1588" unique_id=674894311]
+visible = false
+
+[node name="Books_002_001" parent="." index="1590" unique_id=1849114233]
+visible = false
+
+[node name="Books_004" parent="." index="1592" unique_id=1316922526]
+visible = false
+
+[node name="Curtain_01_014" parent="." index="1597" unique_id=1768086656]
+visible = false
+
+[node name="Cylinder_001" parent="." index="1598" unique_id=1397409529]
+visible = false
+
+[node name="Cylinder_002" parent="." index="1599" unique_id=1060772983]
+visible = false

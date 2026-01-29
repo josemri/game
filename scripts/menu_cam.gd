@@ -34,6 +34,7 @@ func _on_volume_pressed() -> void:
 	trigger_anim_condition("volume")
 
 func _on_language_pressed() -> void:
+	$CanvasLayer/Menu.mouse_filter = 2
 	trigger_anim_condition("language")
 
 func _on_brightness_pressed() -> void:
