@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://cea1sc4qofuos"]
 
 [ext_resource type="Script" uid="uid://d3qkbhq5ya3fe" path="res://scripts/menu_cam.gd" id="1_5mbse"]
-[ext_resource type="PackedScene" uid="uid://fw0kaviy66o3" path="res://assets/menu/menu.glb" id="2_natt5"]
+[ext_resource type="Shader" uid="uid://h8vh5iclx4ub" path="res://scripts/psx.gdshader" id="2_7yvfd"]
 [ext_resource type="PackedScene" uid="uid://bc46van5rjoo4" path="res://scenes/police_char_menu.tscn" id="4_3vvtq"]
+[ext_resource type="PackedScene" uid="uid://bjrrafsq4hnew" path="res://assets/menu/map/menu.glb" id="4_7yvfd"]
 [ext_resource type="PackedScene" uid="uid://cbnt8b6u0okw5" path="res://scenes/main_char_menu.tscn" id="4_s5g8n"]
+[ext_resource type="PackedScene" uid="uid://bruuycoc3dx7g" path="res://scenes/gun.tscn" id="5_s5g8n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfy5j"]
+shader = ExtResource("2_7yvfd")
+shader_parameter/internal_resolution = Vector2(320, 240)
+shader_parameter/color_levels = 32.0
+shader_parameter/dither_strength = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/contrast = 1.15
 
 [sub_resource type="Animation" id="Animation_h73c4"]
 length = 0.001
@@ -170,7 +180,7 @@ advance_mode = 2
 advance_condition = &"volume"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nkpmc"]
-xfade_time = 2.9
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"back"
 
@@ -180,7 +190,7 @@ advance_mode = 2
 advance_condition = &"credits"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yvfd"]
-xfade_time = 2.9
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"back"
 
@@ -195,7 +205,7 @@ advance_mode = 2
 advance_condition = &"language"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_prb5i"]
-xfade_time = 2.9
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"back"
 
@@ -205,7 +215,7 @@ advance_mode = 2
 advance_condition = &"brightness"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wf3n4"]
-xfade_time = 2.9
+xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"back"
 
@@ -235,7 +245,7 @@ sky_material = SubResource("ProceduralSkyMaterial_3vvtq")
 [sub_resource type="Environment" id="Environment_s5g8n"]
 background_mode = 2
 sky = SubResource("Sky_sugp2")
-ambient_light_sky_contribution = 0.05
+ambient_light_sky_contribution = 0.15
 ambient_light_energy = 0.42
 tonemap_mode = 2
 glow_enabled = true
@@ -246,11 +256,12 @@ fog_density = 0.1
 [node name="mainmenu" type="Node3D" unique_id=798986167]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1034739811]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0.36135066, 0.70938826, 2.1190386)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0, 0.17813471, 0)
 fov = 56.90428
 script = ExtResource("1_5mbse")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D" unique_id=2078368565]
+layer = 2
 
 [node name="Menu" type="Control" parent="Camera3D/CanvasLayer" unique_id=2039051652]
 layout_mode = 3
@@ -331,6 +342,17 @@ layout_mode = 2
 theme_type_variation = &"FlatButton"
 text = "back"
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="Camera3D" unique_id=1401426792]
+
+[node name="shader" type="ColorRect" parent="Camera3D/CanvasLayer2" unique_id=963275428]
+material = SubResource("ShaderMaterial_dfy5j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=1616470160]
 libraries/ = SubResource("AnimationLibrary_h73c4")
 
@@ -344,11 +366,8 @@ parameters/conditions/language = false
 parameters/conditions/new_game = false
 parameters/conditions/volume = false
 
-[node name="menu_mesh" parent="." unique_id=1838035086 instance=ExtResource("2_natt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7331251, -0.92601687, -0.9162482)
-
 [node name="mainCharMenu" parent="." unique_id=748794196 instance=ExtResource("4_s5g8n")]
-transform = Transform3D(-0.07485891, 0, -0.41327488, 0, 0.42, 0, 0.41327488, 0, -0.07485891, -1.8344892, -0.96454465, -0.519907)
+transform = Transform3D(-0.07485891, 0, -0.41327488, 0, 0.42, 0, 0.41327488, 0, -0.07485891, -1.834, -0.965, -0.555)
 
 [node name="policeCharMenu" parent="." unique_id=1544079361 instance=ExtResource("4_3vvtq")]
 transform = Transform3D(-0.06591966, 0, -0.41479462, 0, 0.41999996, 0, 0.41479462, 0, -0.06591966, -1.7229242, -0.93515164, -0.22786716)
@@ -360,22 +379,42 @@ environment = SubResource("Environment_s5g8n")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=1128047530]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.9216705, 0.4577999, 2.353558)
+shadow_enabled = true
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Node3D" unique_id=1091866795]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 1.190353, 0.18201466, 0.9334116)
+transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 1.173492, 0.33126497, 0.9023894)
+visible = false
+shadow_enabled = true
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Node3D" unique_id=1414743552]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.1674397, 0.39797074, 0.90075254)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.1966951, 0.24956271, 0.9270587)
+shadow_enabled = true
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Node3D" unique_id=1228147012]
-transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 1.190353, 0.18201466, -1.631105)
+transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, -1, 0, 1, 1.3113416e-07, 1.190353, 0.31376922, -1.631105)
+visible = false
+shadow_enabled = true
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Node3D" unique_id=932908329]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.1674397, 0.39797074, -1.663764)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2038035, 0.32960898, -1.6204644)
+shadow_enabled = true
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Node3D" unique_id=1441189875]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.42246854, 1.2848566, -3.863982)
-spot_angle = 26.869818
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1830909, 1.2848566, -3.863982)
+shadow_enabled = true
+spot_angle = 40.022003
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Node3D" unique_id=735074626]
+transform = Transform3D(0.42437395, -0.4898424, 0.76155186, 0.8069609, -0.1769278, -0.563481, 0.41075656, 0.85366905, 0.32020015, -2.9662287, 0.13945532, -0.7977013)
+light_color = Color(0.9580174, 0.53981465, 0.37649682, 1)
+shadow_enabled = true
+spot_range = 0.2938606
+
+[node name="menu" parent="." unique_id=1881361965 instance=ExtResource("4_7yvfd")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 27.271, -0.177, 34.087)
+
+[node name="gun" parent="." unique_id=956214511 instance=ExtResource("5_s5g8n")]
+transform = Transform3D(-0.0017152642, -1.816079e-10, 0.12998867, -0.045858577, 0.121641375, -0.00060512614, -0.12163078, -0.045862567, -0.0016049776, -1.8287452, -0.16228172, 1.8078604)
 
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/play" to="Camera3D" method="_on_play_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/options" to="Camera3D" method="_on_options_pressed"]

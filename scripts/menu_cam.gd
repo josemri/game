@@ -11,42 +11,38 @@ func _process(delta):
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 
+func trigger_anim_condition(condition: String, duration: float = 0.2) -> void:
+	anim_tree.set("parameters/conditions/%s" % condition, true)
+	await get_tree().create_timer(duration).timeout
+	anim_tree.set("parameters/conditions/%s" % condition, false)
+
 
 func _on_play_pressed() -> void:
-	anim_tree.set("parameters/conditions/new_game", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/new_game", false)
+	trigger_anim_condition("new_game")
+	#temporal just to test
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_options_pressed() -> void:
 	h_box_container.visible = false
 	h_box_container_2.visible = true
 
 func _on_credits_pressed() -> void:
-	anim_tree.set("parameters/conditions/credits", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/credits", false)
-
+	trigger_anim_condition("credits")
+	
 func _on_volume_pressed() -> void:
-	anim_tree.set("parameters/conditions/volume", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/volume", false)
+	trigger_anim_condition("volume")
 
 func _on_language_pressed() -> void:
-	anim_tree.set("parameters/conditions/language", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/language", false)
+	trigger_anim_condition("language")
 
 func _on_brightness_pressed() -> void:
-	anim_tree.set("parameters/conditions/brightness", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/brightness", false)
-
+	trigger_anim_condition("brightness")
+	
 func _on_back_pressed() -> void:
 	h_box_container.visible = true
 	h_box_container_2.visible = false
-	anim_tree.set("parameters/conditions/back", true)
-	await get_tree().create_timer(2.9).timeout
-	anim_tree.set("parameters/conditions/back", false)
+	trigger_anim_condition("back")
 
 func _on_exit_pressed() -> void:
-	pass # Replace with function body.
+	pass
