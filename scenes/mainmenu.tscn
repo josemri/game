@@ -483,7 +483,7 @@ shadow_mesh = SubResource("ArrayMesh_0lxrh")
 [node name="mainmenu" type="Node3D" unique_id=798986167]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1034739811]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0, 0.19354719, 0)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0, 0.1970027, 0)
 fov = 56.90428
 script = ExtResource("1_5mbse")
 
@@ -640,6 +640,9 @@ spot_range = 0.2938606
 
 [node name="gun" parent="." unique_id=956214511 instance=ExtResource("5_s5g8n")]
 transform = Transform3D(-0.0017152642, -1.816079e-10, 0.12998867, -0.045858577, 0.121641375, -0.00060512614, -0.12163078, -0.045862567, -0.0016049776, -1.8287452, -0.16228172, 1.8078604)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="gun" unique_id=159935574]
+transform = Transform3D(0.015552139, -0.043687645, -0.9989242, -0.35190085, 0.9348883, -0.046365757, 0.9359081, 0.35224333, -0.0008342066, 0.442523, 4.920222, 0.005838394)
 
 [node name="menu" parent="." unique_id=1860326511 instance=ExtResource("6_7yvfd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.238647, -0.2079935, 34.086906)

@@ -393,6 +393,7 @@ shape = SubResource("ConvexPolygonShape3D_7ccei")
 [node name="Label3D" type="Label3D" parent="language1" unique_id=128058085]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.229411, 1.2752441, -1.4334416)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "spanish"
 
 [node name="language2" type="MeshInstance3D" parent="." unique_id=883926734]
@@ -408,6 +409,7 @@ shape = SubResource("ConvexPolygonShape3D_3evax")
 [node name="Label3D" type="Label3D" parent="language2" unique_id=979383664]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.174251, 1.2771899, -1.4340553)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "catalan"
 
 [node name="language3" type="MeshInstance3D" parent="." unique_id=1109215993]
@@ -423,6 +425,7 @@ shape = SubResource("ConvexPolygonShape3D_677p5")
 [node name="Label3D" type="Label3D" parent="language3" unique_id=851462749]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.1202469, 1.2752441, -1.4348941)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "english"
 
 [node name="language4" type="MeshInstance3D" parent="." unique_id=2075971490]
@@ -438,6 +441,7 @@ shape = SubResource("ConvexPolygonShape3D_ls4yf")
 [node name="Label3D" type="Label3D" parent="language4" unique_id=1172942614]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.0671126, 1.2752441, -1.4442465)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "bulgarian"
 
 [node name="language5" type="MeshInstance3D" parent="." unique_id=1913949916]
@@ -453,6 +457,7 @@ shape = SubResource("ConvexPolygonShape3D_d0psb")
 [node name="Label3D" type="Label3D" parent="language5" unique_id=923633442]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.0212375, 1.2752441, -1.4602175)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "german"
 
 [node name="language6" type="MeshInstance3D" parent="." unique_id=2067740430]
@@ -470,6 +475,7 @@ shape = SubResource("ConvexPolygonShape3D_311av")
 [node name="Label3D" type="Label3D" parent="language6" unique_id=1412552451]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.9736757, 1.2752441, -1.4615152)
 pixel_size = 0.0012
+modulate = Color(0.52883124, 0.4972877, 0.45905, 1)
 text = "french"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1093844297]
