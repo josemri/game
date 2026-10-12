@@ -9,7 +9,7 @@ metadata={
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8c0a5cdce9f5b9cfb0d6d9d6d069e4ce"
+"md5": "aabff1f0202cb4b36f7a0b72da81682d"
 }
 
 [deps]
@@ -22,6 +22,8 @@ dest_files=["res://.godot/imported/gun_9mm.jpg-b150844eb7949d46e142bb21bcc6db07.
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -29,6 +31,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
