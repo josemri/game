@@ -1,23 +1,29 @@
 extends CharacterBody3D
 
+const BULLET_3D = preload("res://scenes/bullet.tscn")
+
 @export var walk_speed := 4.0
 @export var run_speed := 7.0
 @export var jump_velocity := 5.0
 @export var mouse_sensitivity := 0.2
 @onready var gun_anim: AnimationPlayer = $Camera3D/gun/AnimationPlayer
 
-var HIT_STAGGER = 8.0
+@export var hit_stagger := 8.0
+@export var fire_rate := 0.2
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var can_shoot := true
+var rng := RandomNumberGenerator.new()
 
 func hit(dir):
-	velocity += dir * HIT_STAGGER
+	velocity += dir * hit_stagger
 	$Camera3D/CanvasLayer/ColorRect.visible = true
 	await get_tree().create_timer(0.2).timeout
 	$Camera3D/CanvasLayer/ColorRect.visible = false
 
 
 func _ready():
+	rng.randomize()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -60,9 +66,11 @@ func _physics_process(delta: float):
 	
 	
 func shoot_bullet():
-	if !gun_anim.is_playing():
+	if !gun_anim.is_playing() and can_shoot:
+		can_shoot = false
 		gun_anim.play("shoot")
-		const BULLET_3D = preload("res://scenes/bullet.tscn")
 		var new_bullet = BULLET_3D.instantiate()
 		%Marker3D.add_child(new_bullet)
 		new_bullet.global_transform = %Marker3D.global_transform
+		await get_tree().create_timer(fire_rate).timeout
+		can_shoot = true

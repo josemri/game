@@ -2,24 +2,30 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
-var SPEED = 3
 const ATTACK_RANGE = 2.5
-var health = 6
 var attack_states = ["attack", "bite"]
 
 @export var player_path : NodePath
+@export var speed := 3.0
+@export var health := 6
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var skeleton: Skeleton3D = $Armature/Skeleton3D
 @onready var mesh_instance: MeshInstance3D = $Armature/Skeleton3D/mesh
 
 var is_dead := false
+var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
+	rng.randomize()
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 
 func _process(delta: float) -> void:
+	if not is_instance_valid(player):
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
 	velocity = Vector3.ZERO
 
 	if _target_in_range() && !attack_states.any(func(a): return anim_tree["parameters/conditions/" + a]):
@@ -32,7 +38,7 @@ func _process(delta: float) -> void:
 		"zombie_run":
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_pint = nav_agent.get_next_path_position()
-			velocity = (next_nav_pint - global_transform.origin).normalized() * SPEED
+			velocity = (next_nav_pint - global_transform.origin).normalized() * speed
 			rotation.y = lerp_angle(rotation.y, atan2(-velocity.x, -velocity.z), delta*5.0)
 		"zombie_attack", "zombie_bite":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
@@ -41,12 +47,14 @@ func _process(delta: float) -> void:
 
 
 func _choose_random_attack() -> String:
-	return attack_states[randi() % attack_states.size()]
+	return attack_states[rng.randi_range(0, attack_states.size() - 1)]
 
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
 func _hit_finished():
+	if not is_instance_valid(player):
+		return
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir)

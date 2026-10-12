@@ -5,5 +5,5 @@ extends PhysicalBone3D
 
 signal body_part_hit(damage, body_part)
 
-func take_damage():
-	emit_signal("body_part_hit", damage, body_part)
+func take_damage(amount: int = damage):
+	emit_signal("body_part_hit", amount, body_part)
