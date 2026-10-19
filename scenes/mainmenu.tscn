@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cldf4jcqsxunk" path="res://assets/menu/map/menu_Books.png" id="10_kait0"]
 [ext_resource type="Texture2D" uid="uid://8lekk87sok33" path="res://assets/menu/map/menu_Curtain_01.png" id="11_6pj40"]
 [ext_resource type="PackedScene" uid="uid://jspvwqgh281u" path="res://scenes/languages.tscn" id="11_uui5l"]
+[ext_resource type="PackedScene" path="res://scenes/volume_menu.tscn" id="12_vlm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfy5j"]
 shader = ExtResource("2_7yvfd")
@@ -680,6 +681,7 @@ mesh = SubResource("ArrayMesh_c50wd")
 skeleton = NodePath("")
 
 [node name="languages" parent="menuItems" unique_id=76826414 instance=ExtResource("11_uui5l")]
+[node name="volume_menu" parent="menuItems" unique_id=89213456 instance=ExtResource("12_vlm")]
 
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/play" to="Camera3D" method="_on_play_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/options" to="Camera3D" method="_on_options_pressed"]

@@ -489,7 +489,7 @@ libraries/ = SubResource("AnimationLibrary_ooccl")
 [connection signal="mouse_exited" from="language2/Area3D" to="." method="_on_area_3d_mouse_exited" binds= [2]]
 [connection signal="mouse_entered" from="language3/Area3D" to="." method="_on_area_3d_mouse_entered" binds= [3]]
 [connection signal="mouse_exited" from="language3/Area3D" to="." method="_on_area_3d_mouse_exited" binds= [3]]
-[connection signal="input_event" from="language4/Area3D" to="." method="_on_language_4a_input_event"]
+[connection signal="input_event" from="language4/Area3D" to="." method="_on_area_3d_input_event"]
 [connection signal="mouse_entered" from="language4/Area3D" to="." method="_on_area_3d_mouse_entered" binds= [4]]
 [connection signal="mouse_exited" from="language4/Area3D" to="." method="_on_area_3d_mouse_exited" binds= [4]]
 [connection signal="input_event" from="language5/Area3D" to="." method="_on_area_3d_input_event"]

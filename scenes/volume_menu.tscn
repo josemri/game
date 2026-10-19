@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/volume_menu.gd" id="1_vlmm"]
+
+[node name="volume_menu" type="Node3D"]
+script = ExtResource("1_vlmm")
+
+[node name="select_label" type="Label3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.7, 0.13, -0.8456)
+pixel_size = 0.0005
+modulate = Color(0.62, 0.58, 0.52, 1)
+text = "MASTER"
+
+[node name="value_label" type="Label3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.7, 0.13, -0.6423)
+pixel_size = 0.0005
+modulate = Color(0.62, 0.58, 0.52, 1)
+text = "100%"
