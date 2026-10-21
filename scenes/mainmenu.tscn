@@ -226,6 +226,11 @@ xfade_time = 0.5
 advance_mode = 2
 advance_condition = &"back"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xng01"]
+xfade_time = 2.9
+advance_mode = 2
+advance_condition = &"new_game"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fsdjo"]
 states/brightness/node = SubResource("AnimationNodeAnimation_7yvfd")
 states/brightness/position = Vector2(270.90002, 204.7)
@@ -239,7 +244,7 @@ states/new_game/node = SubResource("AnimationNodeAnimation_s5g8n")
 states/new_game/position = Vector2(579.69995, 100.068)
 states/volume/node = SubResource("AnimationNodeAnimation_gjjcl")
 states/volume/position = Vector2(526.10004, -37.1)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kait0"), "idle", "volume", SubResource("AnimationNodeStateMachineTransition_6pj40"), "volume", "idle", SubResource("AnimationNodeStateMachineTransition_nkpmc"), "idle", "credits", SubResource("AnimationNodeStateMachineTransition_s5g8n"), "credits", "idle", SubResource("AnimationNodeStateMachineTransition_7yvfd"), "idle", "new_game", SubResource("AnimationNodeStateMachineTransition_dfy5j"), "idle", "language", SubResource("AnimationNodeStateMachineTransition_fsdjo"), "language", "idle", SubResource("AnimationNodeStateMachineTransition_prb5i"), "idle", "brightness", SubResource("AnimationNodeStateMachineTransition_85riq"), "brightness", "idle", SubResource("AnimationNodeStateMachineTransition_wf3n4")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kait0"), "idle", "volume", SubResource("AnimationNodeStateMachineTransition_6pj40"), "volume", "idle", SubResource("AnimationNodeStateMachineTransition_nkpmc"), "idle", "credits", SubResource("AnimationNodeStateMachineTransition_s5g8n"), "credits", "idle", SubResource("AnimationNodeStateMachineTransition_7yvfd"), "idle", "new_game", SubResource("AnimationNodeStateMachineTransition_dfy5j"), "idle", "language", SubResource("AnimationNodeStateMachineTransition_fsdjo"), "language", "idle", SubResource("AnimationNodeStateMachineTransition_prb5i"), "idle", "brightness", SubResource("AnimationNodeStateMachineTransition_85riq"), "brightness", "idle", SubResource("AnimationNodeStateMachineTransition_wf3n4"), "credits", "new_game", SubResource("AnimationNodeStateMachineTransition_xng01")]
 graph_offset = Vector2(-523, -92)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vvtq"]
@@ -521,14 +526,12 @@ text = "play"
 [node name="options" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer" unique_id=1109578427]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "options
-"
+text = "options"
 
 [node name="credits" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer" unique_id=683702356]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "credits
-"
+text = "credits"
 
 [node name="exit" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer" unique_id=1253930628]
 layout_mode = 2
@@ -557,14 +560,12 @@ text = "volume"
 [node name="language" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer2/VBoxContainer" unique_id=1869707032]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "language
-"
+text = "language"
 
 [node name="brightness" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer2/VBoxContainer" unique_id=33236138]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-text = "brightness
-"
+text = "brightness"
 
 [node name="back" type="Button" parent="Camera3D/CanvasLayer/Menu/HBoxContainer2/VBoxContainer" unique_id=735496395]
 layout_mode = 2

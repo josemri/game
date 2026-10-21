@@ -25,14 +25,14 @@ func _ready() -> void:
 		if book:
 			_base[str(i)] = book.transform
 
-func _on_area_3d_mouse_entered(_name: int) -> void:
-	var book := str(_name)
+func _on_area_3d_mouse_entered(book_id: int) -> void:
+	var book := str(book_id)
 	_hovered[book] = true
 	if _active != book:
 		_set_active(book)
 
-func _on_area_3d_mouse_exited(_name: int) -> void:
-	var book := str(_name)
+func _on_area_3d_mouse_exited(book_id: int) -> void:
+	var book := str(book_id)
 	_hovered.erase(book)
 	if _active != book:
 		# Salida de un select que ya había quedado atrás: no toca el estado del ratón.
@@ -100,6 +100,3 @@ func _kill_return(book: String) -> void:
 		var tw: Tween = _return_tweens[book]
 		tw.kill()
 		_return_tweens.erase(book)
-
-func _on_area_3d_input_event(_camera: Node, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	pass

@@ -36,7 +36,8 @@ const LIGHT_FILL_MAX := 0.12
 const LIGHT_FLOOR_MIN := 0.05
 const LIGHT_FLOOR_MAX := 0.3
 ## El ambiente del entorno apuntaba al color de fondo
-## (ambient_light_source=AMBIENT_SOURCE_BG), que ignora `ambient_light_energy`: la sala entera quedaba a oscuras
+## (ambient_light_source=AMBIENT_SOURCE_BG), que ignora
+## `ambient_light_energy`: la sala entera quedaba a oscuras
 ## para el control y unos pocos meshes respondían a las luces del menú.
 ## Se pasa a COLOR para que el brillo alcance todos los meshes por igual.
 const AMBIENT_COLOR := Color(0.30, 0.32, 0.36)
@@ -209,7 +210,7 @@ func _apply_all() -> void:
 func _apply_panels() -> void:
 	for side in ["left", "right"]:
 		var panel: MeshInstance3D = _panels.get(side)
-		if panel == null or not _base.has(side):
+		if panel == null or not _base.has(side) or not _slide.has(side):
 			continue
 		var base: Transform3D = _base[side]
 		var pivot: Vector3 = _pivot[side]
