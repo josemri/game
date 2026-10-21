@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8lekk87sok33" path="res://assets/menu/map/menu_Curtain_01.png" id="11_6pj40"]
 [ext_resource type="PackedScene" uid="uid://jspvwqgh281u" path="res://scenes/languages.tscn" id="11_uui5l"]
 [ext_resource type="PackedScene" path="res://scenes/volume_menu.tscn" id="12_vlm"]
+[ext_resource type="PackedScene" path="res://scenes/brightness_menu.tscn" id="13_brm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfy5j"]
 shader = ExtResource("2_7yvfd")
@@ -682,6 +683,7 @@ skeleton = NodePath("")
 
 [node name="languages" parent="menuItems" unique_id=76826414 instance=ExtResource("11_uui5l")]
 [node name="volume_menu" parent="menuItems" unique_id=89213456 instance=ExtResource("12_vlm")]
+[node name="brightness_menu" parent="menuItems" unique_id=205110001 instance=ExtResource("13_brm")]
 
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/play" to="Camera3D" method="_on_play_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Menu/HBoxContainer/VBoxContainer/options" to="Camera3D" method="_on_options_pressed"]

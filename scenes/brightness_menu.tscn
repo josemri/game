@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/brightness_menu.gd" id="1_brmn"]
+
+[node name="brightness_menu" type="Node3D"]
+script = ExtResource("1_brmn")
+
+[node name="outside_light" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 2, 4)
+light_color = Color(1, 0.94, 0.82, 1)
+light_energy = 3
+shadow_enabled = true
+spot_range = 9.0
+spot_angle = 55.0
+
+[node name="spill_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0.9, 2.3)
+light_color = Color(1, 0.94, 0.82, 1)
+omni_range = 4.5
+
+[node name="fill_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 1.5, 1.1)
+omni_range = 5.5
