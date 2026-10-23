@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://jspvwqgh281u" path="res://scenes/languages.tscn" id="11_uui5l"]
 [ext_resource type="PackedScene" path="res://scenes/volume_menu.tscn" id="12_vlm"]
 [ext_resource type="PackedScene" path="res://scenes/brightness_menu.tscn" id="13_brm"]
+[ext_resource type="PackedScene" path="res://scenes/character_customizer.tscn" id="14_cc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfy5j"]
 shader = ExtResource("2_7yvfd")
@@ -120,14 +121,14 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(3, 1, -2.3835835, 0, 0.04322034)
+tracks/0/keys = PackedFloat32Array(3, 1, -1.295, 0.205, 1.988)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(3, 1, -0.28780937, -0.29006964, -0.0919375, 0.90805995)
+tracks/1/keys = PackedFloat32Array(3, 1, -0.046815138, 0.257130176, 0.012472093, 0.965161622)
 
 [sub_resource type="Animation" id="Animation_wf3n4"]
 resource_name = "volume"
@@ -231,6 +232,11 @@ xfade_time = 2.9
 advance_mode = 2
 advance_condition = &"new_game"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bck02"]
+xfade_time = 1.0
+advance_mode = 2
+advance_condition = &"back"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fsdjo"]
 states/brightness/node = SubResource("AnimationNodeAnimation_7yvfd")
 states/brightness/position = Vector2(270.90002, 204.7)
@@ -244,7 +250,7 @@ states/new_game/node = SubResource("AnimationNodeAnimation_s5g8n")
 states/new_game/position = Vector2(579.69995, 100.068)
 states/volume/node = SubResource("AnimationNodeAnimation_gjjcl")
 states/volume/position = Vector2(526.10004, -37.1)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kait0"), "idle", "volume", SubResource("AnimationNodeStateMachineTransition_6pj40"), "volume", "idle", SubResource("AnimationNodeStateMachineTransition_nkpmc"), "idle", "credits", SubResource("AnimationNodeStateMachineTransition_s5g8n"), "credits", "idle", SubResource("AnimationNodeStateMachineTransition_7yvfd"), "idle", "new_game", SubResource("AnimationNodeStateMachineTransition_dfy5j"), "idle", "language", SubResource("AnimationNodeStateMachineTransition_fsdjo"), "language", "idle", SubResource("AnimationNodeStateMachineTransition_prb5i"), "idle", "brightness", SubResource("AnimationNodeStateMachineTransition_85riq"), "brightness", "idle", SubResource("AnimationNodeStateMachineTransition_wf3n4"), "credits", "new_game", SubResource("AnimationNodeStateMachineTransition_xng01")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kait0"), "idle", "volume", SubResource("AnimationNodeStateMachineTransition_6pj40"), "volume", "idle", SubResource("AnimationNodeStateMachineTransition_nkpmc"), "idle", "credits", SubResource("AnimationNodeStateMachineTransition_s5g8n"), "credits", "idle", SubResource("AnimationNodeStateMachineTransition_7yvfd"), "idle", "new_game", SubResource("AnimationNodeStateMachineTransition_dfy5j"), "new_game", "idle", SubResource("AnimationNodeStateMachineTransition_bck02"), "idle", "language", SubResource("AnimationNodeStateMachineTransition_fsdjo"), "language", "idle", SubResource("AnimationNodeStateMachineTransition_prb5i"), "idle", "brightness", SubResource("AnimationNodeStateMachineTransition_85riq"), "brightness", "idle", SubResource("AnimationNodeStateMachineTransition_wf3n4"), "credits", "new_game", SubResource("AnimationNodeStateMachineTransition_xng01")]
 graph_offset = Vector2(-523, -92)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vvtq"]
@@ -571,6 +577,9 @@ text = "brightness"
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 text = "back"
+
+[node name="CharacterCustomizer" parent="Camera3D/CanvasLayer/Menu" instance=ExtResource("14_cc")]
+layout_mode = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Camera3D" unique_id=1401426792]
 

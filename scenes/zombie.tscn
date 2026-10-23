@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://bh641xocysx5g"]
+[gd_scene load_steps=116 format=4 uid="uid://bh641xocysx5g"]
 
 [ext_resource type="Script" uid="uid://c5uk1dgpptju3" path="res://scripts/zombie.gd" id="1_httt1"]
 [ext_resource type="Texture2D" uid="uid://8057mremfwg6" path="res://assets/zombie/zombie_Character_Monster_02.png" id="2_httt1"]
@@ -15436,52 +15436,54 @@ animation = &"zombie/walk"
 xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"attack"
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pjjxt"]
 xfade_time = 0.2
 switch_mode = 2
-advance_condition = &"run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7pfmu"]
 advance_mode = 2
-
+advance_condition = &"run"
+priority = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7pfmu"]
+switch_mode = 0
+advance_mode = 2
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_httt1"]
 xfade_time = 0.5
 switch_mode = 2
 advance_mode = 2
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xepks"]
 xfade_time = 0.7
 switch_mode = 2
 advance_mode = 2
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iblsu"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ida1p"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6hpf"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eskk2"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die_headshot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_us5qj"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die_headshot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xtb48"]
-xfade_time = 0.2
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die_headshot"
 
@@ -15489,51 +15491,59 @@ advance_condition = &"die_headshot"
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ncdm"]
 xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mxyu1"]
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3fsw7"]
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1nid1"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit_headshot"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fyb12"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit_headshot"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oscyj"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit_headshot"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dnsdx"]
+xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_118du"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r6vye"]
+xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"hit_headshot"
-
+priority = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ul64k"]
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die_headshot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujrmm"]
+xfade_time = 0.3
 advance_mode = 2
 advance_condition = &"die"
 
@@ -15541,11 +15551,46 @@ advance_condition = &"die"
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"bite"
-
+priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fcyai"]
 xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
+priority = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd01"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hit"
+priority = 1
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd02"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"hit_headshot"
+priority = 1
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd03"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd04"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die_headshot"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd05"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd06"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die_headshot"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd07"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_zd08"]
+xfade_time = 0.3
+advance_mode = 2
+advance_condition = &"die_headshot"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4gx57"]
 allow_transition_to_self = true
@@ -15571,7 +15616,7 @@ states/zombie_take_hit_headshot/position = Vector2(902.64, -61.7211)
 "states/zombie_wake up/position" = Vector2(367.333, 99.8436)
 states/zombie_walk/node = SubResource("AnimationNodeAnimation_httt1")
 states/zombie_walk/position = Vector2(210.741, 249.481)
-transitions = ["zombie_run", "zombie_attack", SubResource("AnimationNodeStateMachineTransition_ycv6i"), "zombie_attack", "zombie_run", SubResource("AnimationNodeStateMachineTransition_pjjxt"), "Start", "zombie_wake up", SubResource("AnimationNodeStateMachineTransition_7pfmu"), "zombie_wake up", "zombie_scream2", SubResource("AnimationNodeStateMachineTransition_httt1"), "zombie_scream2", "zombie_run", SubResource("AnimationNodeStateMachineTransition_xepks"), "zombie_scream2", "zombie_die", SubResource("AnimationNodeStateMachineTransition_iblsu"), "zombie_run", "zombie_die", SubResource("AnimationNodeStateMachineTransition_ida1p"), "zombie_attack", "zombie_die", SubResource("AnimationNodeStateMachineTransition_u6hpf"), "zombie_scream2", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_eskk2"), "zombie_run", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_us5qj"), "zombie_attack", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_xtb48"), "zombie_scream2", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_f78au"), "zombie_take_hit", "zombie_run", SubResource("AnimationNodeStateMachineTransition_5ncdm"), "zombie_run", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_mxyu1"), "zombie_attack", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_3fsw7"), "zombie_scream2", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_1nid1"), "zombie_run", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_fyb12"), "zombie_attack", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_oscyj"), "zombie_take_hit_headshot", "zombie_run", SubResource("AnimationNodeStateMachineTransition_dnsdx"), "zombie_bite", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_118du"), "zombie_bite", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_r6vye"), "zombie_bite", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_ul64k"), "zombie_bite", "zombie_die", SubResource("AnimationNodeStateMachineTransition_ujrmm"), "zombie_run", "zombie_bite", SubResource("AnimationNodeStateMachineTransition_kr53x"), "zombie_bite", "zombie_run", SubResource("AnimationNodeStateMachineTransition_fcyai")]
+transitions = ["zombie_run", "zombie_attack", SubResource("AnimationNodeStateMachineTransition_ycv6i"), "zombie_attack", "zombie_run", SubResource("AnimationNodeStateMachineTransition_pjjxt"), "Start", "zombie_wake up", SubResource("AnimationNodeStateMachineTransition_7pfmu"), "zombie_wake up", "zombie_scream2", SubResource("AnimationNodeStateMachineTransition_httt1"), "zombie_scream2", "zombie_run", SubResource("AnimationNodeStateMachineTransition_xepks"), "zombie_scream2", "zombie_die", SubResource("AnimationNodeStateMachineTransition_iblsu"), "zombie_run", "zombie_die", SubResource("AnimationNodeStateMachineTransition_ida1p"), "zombie_attack", "zombie_die", SubResource("AnimationNodeStateMachineTransition_u6hpf"), "zombie_scream2", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_eskk2"), "zombie_run", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_us5qj"), "zombie_attack", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_xtb48"), "zombie_scream2", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_f78au"), "zombie_take_hit", "zombie_run", SubResource("AnimationNodeStateMachineTransition_5ncdm"), "zombie_run", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_mxyu1"), "zombie_attack", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_3fsw7"), "zombie_scream2", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_1nid1"), "zombie_run", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_fyb12"), "zombie_attack", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_oscyj"), "zombie_take_hit_headshot", "zombie_run", SubResource("AnimationNodeStateMachineTransition_dnsdx"), "zombie_bite", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_118du"), "zombie_bite", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_r6vye"), "zombie_bite", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_ul64k"), "zombie_bite", "zombie_die", SubResource("AnimationNodeStateMachineTransition_ujrmm"), "zombie_run", "zombie_bite", SubResource("AnimationNodeStateMachineTransition_kr53x"), "zombie_bite", "zombie_run", SubResource("AnimationNodeStateMachineTransition_fcyai"), "zombie_wake up", "zombie_take_hit", SubResource("AnimationNodeStateMachineTransition_zd01"), "zombie_wake up", "zombie_take_hit_headshot", SubResource("AnimationNodeStateMachineTransition_zd02"), "zombie_wake up", "zombie_die", SubResource("AnimationNodeStateMachineTransition_zd03"), "zombie_wake up", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_zd04"), "zombie_take_hit", "zombie_die", SubResource("AnimationNodeStateMachineTransition_zd05"), "zombie_take_hit", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_zd06"), "zombie_take_hit_headshot", "zombie_die", SubResource("AnimationNodeStateMachineTransition_zd07"), "zombie_take_hit_headshot", "zombie_die_headshot", SubResource("AnimationNodeStateMachineTransition_zd08")]
 graph_offset = Vector2(-137.674, -145.455)
 
 [node name="zombie" type="CharacterBody3D"]
@@ -15829,6 +15874,8 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000891271, -0.00114378,
 body_offset = Transform3D(204.824, 0.549318, 0.0814419, 0.025736, 20.6174, -203.784, -0.554729, 203.783, 20.6172, 0.177013, 15.4582, -1.32895)
 bone_name = "mixamorig_Hips"
 script = ExtResource("3_xepks")
+damage = 2
+body_part = "torso"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Hips"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15846,6 +15893,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 2
+body_part = "torso"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Spine"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15863,6 +15912,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 2
+body_part = "torso"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Spine1"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15880,6 +15931,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 2
+body_part = "torso"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Spine2"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15897,6 +15950,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 2
+body_part = "torso"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_Neck"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15933,6 +15988,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftShoulder"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15950,6 +16007,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftArm"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -15967,6 +16026,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftForeArm"]
 transform = Transform3D(0.005, 8.14907e-10, 4.94765e-10, 1.19326e-09, -6.98492e-10, 0.005, -2.32831e-10, -0.005, -4.65661e-10, 0.0651611, 0.0074144, 0.0981211)
@@ -15984,6 +16045,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftHand"]
 transform = Transform3D(0.005, 1.16415e-10, -2.47383e-10, -3.49246e-10, -1.16415e-10, 0.005, 0, -0.005, -1.74623e-10, -0.0771148, -0.0651778, -0.0326506)
@@ -16001,6 +16064,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftHandIndex1"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16018,6 +16083,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftHandIndex2"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16035,6 +16102,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftHandIndex3"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16052,6 +16121,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightShoulder"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16069,6 +16140,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightArm"]
 transform = Transform3D(0.005, -5.82077e-11, 2.32831e-10, -1.16415e-10, -2.91038e-10, 0.005, 0, -0.005, -1.74623e-10, 0.0150595, 0.00313635, 0.171079)
@@ -16086,6 +16159,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightForeArm"]
 transform = Transform3D(0.005, 0, 5.82077e-11, 1.45519e-11, -2.32831e-10, 0.005, 0, -0.005, -2.32831e-10, -0.146352, -0.0105101, -0.0257324)
@@ -16103,6 +16178,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightHand"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16120,6 +16197,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightHandIndex1"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16137,6 +16216,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightHandIndex2"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16154,6 +16235,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "arm"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightHandIndex3"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16171,6 +16254,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftUpLeg"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16188,6 +16273,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftLeg"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16205,6 +16292,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftFoot"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16222,6 +16311,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_LeftToeBase"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16239,6 +16330,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightUpLeg"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16256,6 +16349,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightLeg"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16273,6 +16368,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightFoot"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16290,6 +16387,8 @@ joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
 joint_constraints/impulse_clamp = 0.0
 script = ExtResource("3_xepks")
+damage = 1
+body_part = "leg"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone mixamorig_RightToeBase"]
 transform = Transform3D(0.005, 0, 0, 0, -2.18557e-10, 0.005, 0, -0.005, -2.18557e-10, 0, 0, 0)
@@ -16308,6 +16407,7 @@ visible = false
 shape = SubResource("CapsuleShape3D_1vlb3")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = true
 tree_root = SubResource("AnimationNodeStateMachine_4gx57")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false

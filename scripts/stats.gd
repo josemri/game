@@ -48,12 +48,16 @@ func _init(_sex: Sex = Sex.HOMBRE, _weight: float = 70.0, _playerName: String = 
 	
 	if (_playerName == ""):
 		if(sex == Sex.HOMBRE):
-			playerName = "Jhon"
+			playerName = "John"
 		else:
 			playerName = "Jane"
+	else:
+		playerName = _playerName
 	
 	if (_playerSurname == ""):
 		playersurname = "Doe"
+	else:
+		playersurname = _playerSurname
 	
 	
 	_calculate_blood()
