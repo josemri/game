@@ -40,7 +40,7 @@ var player_name: String = DEFAULT_NAME_MALE
 var surname: String = DEFAULT_SURNAME
 var gender: int = 0
 var weight: float = 75.0
-var height: float = 1.83
+var height: float = 1.85
 var outfit: int = 2
 var skin_tone: int = 0
 
@@ -103,7 +103,7 @@ func reset() -> void:
 	surname = DEFAULT_SURNAME
 	gender = 0
 	weight = 75.0
-	height = 1.83
+	height = 1.85
 	outfit = 2
 	skin_tone = 0
 	_rebuild_stats()
@@ -127,6 +127,6 @@ func load_profile() -> void:
 	surname = str(config.get_value("identity", "surname", DEFAULT_SURNAME))
 	gender = clampi(int(config.get_value("identity", "gender", 0)), 0, 1)
 	weight = clampf(float(config.get_value("body", "weight", 75.0)), 45.0, 140.0)
-	height = clampf(float(config.get_value("body", "height", 1.83)), 1.55, 1.95)
+	height = clampf(float(config.get_value("body", "height", 1.85)), 1.55, 1.95)
 	outfit = clampi(int(config.get_value("appearance", "outfit", 2)), 1, OUTFITS.size())
 	skin_tone = clampi(int(config.get_value("appearance", "skin_tone", 0)), 0, SKIN_TONES.size() - 1)

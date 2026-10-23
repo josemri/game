@@ -75,14 +75,33 @@ func _run() -> void:
 	_check("2) tras el vuelo el editor es visible", cc.visible)
 	_check("2) las filas del menú se ocultan", not row1.visible and not row2.visible)
 	_check("2) el personaje secundario se oculta", not police.visible)
-	_check("2) el personaje pasa al idle de pie",
-		anim.current_animation == "Armature_001|mixamo_com|Layer0")
+	_check("2) el personaje sigue tumbado durante la creación",
+		anim.current_animation == "beg")
 	_check("2) el formulario se sincroniza con el perfil",
 		cc.get("name_edit").text == profile.get("player_name")
 		and cc.get("surname_edit").text == profile.get("surname"))
 	_check("2) el panel cabe en la pantalla",
 		cc.get_node("Panel").get_global_rect().end.x <= 1152.0
 		and cc.get_node("Panel").get_global_rect().end.y <= 648.0)
+
+	var weight_buttons: Array = cc.get("_weight_buttons")
+	var height_buttons: Array = cc.get("_height_buttons")
+	_check("2) el género son dos botones, no un desplegable",
+		cc.get_node_or_null("Panel/Margin/VBox/Scroll/Fields/GenderRow/GenderOption") == null
+		and cc.get_node("Panel/Margin/VBox/Scroll/Fields/GenderRow/MaleButton") != null
+		and cc.get_node("Panel/Margin/VBox/Scroll/Fields/GenderRow/FemaleButton") != null)
+	_check("2) el peso es una lista corta de opciones",
+		weight_buttons.size() == 6 and String(weight_buttons[0].text) == "55"
+		and String(weight_buttons[5].text) == "135")
+	_check("2) la altura es una lista corta de opciones",
+		height_buttons.size() == 5 and String(height_buttons[0].text) == "1.55"
+		and String(height_buttons[4].text) == "1.95")
+	var tips_ok := true
+	for button in weight_buttons + height_buttons:
+		var tip := String(button.tooltip_text)
+		if not ("ADV:" in tip and "DIS:" in tip):
+			tips_ok = false
+	_check("2) cada opción explica ventajas y desventajas al pasar el ratón", tips_ok)
 
 	var visible_outfits: Array = []
 	for i in range(1, 9):
@@ -93,6 +112,9 @@ func _run() -> void:
 		visible_outfits.size() == 1 and int(visible_outfits[0]) == int(profile.get("outfit")))
 	_check("2) las 9 mallas de piel tienen material propio",
 		(cc.get("_skin_entries") as Array).size() == 9)
+	_check("2) la camiseta de manga corta muestra los brazos de piel",
+		(skel.get_node("arms") as MeshInstance3D).visible
+		and (skel.get_node("arms_009") as MeshInstance3D).visible)
 
 	# 3) cambio de ropa en vivo
 	cc.call("_on_outfit_selected", 5)
@@ -103,7 +125,12 @@ func _run() -> void:
 	_check("3) la ropa anterior se oculta",
 		not (skel.get_node("arms_002") as MeshInstance3D).visible
 		and not (skel.get_node("torso_002") as MeshInstance3D).visible)
+	_check("3) los brazos de piel siguen disponibles con otra ropa",
+		(skel.get_node("arms") as MeshInstance3D).visible
+		and (skel.get_node("arms_009") as MeshInstance3D).visible)
 	_check("3) el perfil guarda la ropa", int(profile.get("outfit")) == 5)
+	_check("3) cambiarse de ropa no levanta al personaje",
+		anim.current_animation == "beg")
 
 	# 4) tono de piel en vivo (el tinte se multiplica sobre el color base)
 	var head: MeshInstance3D = skel.get_node("head")
@@ -121,7 +148,7 @@ func _run() -> void:
 
 	# 5) peso y altura cambian el cuerpo
 	var base_scale: Vector3 = main.scale
-	cc.get("weight_slider").value = 110.0
+	weight_buttons[4].pressed.emit()
 	await process_frame
 	_check("5) el peso ensancha el personaje",
 		main.scale.x > base_scale.x and main.scale.z > base_scale.z)
@@ -132,10 +159,10 @@ func _run() -> void:
 		"7.9 L" in cc.get("blood_label").text and "heavy" in cc.get("blood_label").text)
 
 	var weight_scale: Vector3 = main.scale
-	cc.get("height_slider").value = 1.95
+	height_buttons[4].pressed.emit()
 	await process_frame
 	_check("5) la altura estira el personaje", main.scale.y > weight_scale.y)
-	cc.get("height_slider").value = 1.55
+	height_buttons[0].pressed.emit()
 	await process_frame
 	_check("5) bajar la altura encoge el personaje", main.scale.y < weight_scale.y)
 
@@ -143,18 +170,26 @@ func _run() -> void:
 	profile.call("set_names", "John", "Doe")
 	cc.get("name_edit").text = "John"
 	cc.get("surname_edit").text = "Doe"
-	cc.call("_on_gender_selected", 1)
+	var male_button: Button = cc.get("male_button")
+	var female_button: Button = cc.get("female_button")
+	female_button.button_pressed = true
+	female_button.pressed.emit()
 	await process_frame
 	_check("6) cambiar a mujer actualiza el nombre por defecto",
 		cc.get("name_edit").text == "Jane")
 	_check("6) la mujer tiene otro volumen de sangre",
 		absf(float(profile.get("stats").max_blood) - 7150.0) < 0.5)
+	_check("6) el botón de mujer queda marcado",
+		female_button.button_pressed and not male_button.button_pressed)
 	cc.get("name_edit").text = "Ana"
 	cc.get("surname_edit").text = "Ruiz"
-	cc.call("_on_gender_selected", 0)
+	male_button.button_pressed = true
+	male_button.pressed.emit()
 	await process_frame
 	_check("6) un nombre propio no se pisa al cambiar de sexo",
 		cc.get("name_edit").text == "Ana")
+	_check("6) el botón de hombre queda marcado",
+		male_button.button_pressed and not female_button.button_pressed)
 	cc.call("commit_profile")
 	_check("6) commit guarda nombre y apellido COMPLETOS",
 		profile.get("player_name") == "Ana" and profile.get("surname") == "Ruiz")
@@ -187,12 +222,15 @@ func _run() -> void:
 	await process_frame
 	_check("9) randomize elige una ropa válida",
 		int(profile.get("outfit")) >= 1 and int(profile.get("outfit")) <= 8)
-	_check("9) randomize elige un peso válido",
-		float(profile.get("weight")) >= 55.0 and float(profile.get("weight")) <= 115.0)
+	_check("9) randomize elige un peso de la lista",
+		float(profile.get("weight")) in [55.0, 65.0, 75.0, 90.0, 110.0, 135.0])
+	_check("9) randomize elige una altura de la lista",
+		float(profile.get("height")) in [1.55, 1.65, 1.75, 1.85, 1.95])
 	_check("9) randomize sincroniza el campo de nombre",
 		cc.get("name_edit").text == profile.get("player_name"))
-	_check("9) randomize sincroniza el selector de sexo",
-		cc.get("gender_option").selected == int(profile.get("gender")))
+	_check("9) randomize sincroniza los botones de sexo",
+		male_button.button_pressed == (int(profile.get("gender")) == 0)
+		and female_button.button_pressed == (int(profile.get("gender")) == 1))
 
 	# 10) back: el menú vuelve al home y el personaje se tumba
 	cc.call("_on_back_pressed")

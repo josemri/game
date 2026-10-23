@@ -18,10 +18,8 @@ extends Camera3D
 @onready var police_char: Node3D = $"../policeCharMenu"
 @onready var customization: Control = $CanvasLayer/Menu/CharacterCustomizer
 
-## Segundos que se deja volar la cámara antes de enseñar el editor: el
-## personaje se levanta en ese momento y el panel aparece con la cámara
-## ya casi en su sitio.
-const CUSTOMIZE_DELAY := 1.8
+## Segundos que se deja volar la cámara antes de enseñar el editor.
+const CUSTOMIZE_DELAY := 1.6
 
 ## true en cuanto se pulsa "play": el menú ya no responde mientras
 ## se carga el nivel (evita dobles pulsaciones que reinicien la escena).
@@ -35,6 +33,8 @@ var _at_home := true
 var _cond_seq := {}
 
 func _ready() -> void:
+	# el personaje que espera tumbado ya lleva el aspecto guardado
+	customization.prepare(main_char)
 	customization.start_pressed.connect(_on_customization_start)
 	customization.back_pressed.connect(_on_customization_back)
 

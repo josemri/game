@@ -3,19 +3,16 @@
 [ext_resource type="Script" path="res://scripts/character_customizer.gd" id="1_cc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0.055, 0.058, 0.068, 0.94)
+bg_color = Color(0.055, 0.058, 0.062, 0.93)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.42, 0.35, 0.22, 0.9)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-shadow_color = Color(0, 0, 0, 0.35)
-shadow_size = 12
-shadow_offset = Vector2(4, 6)
+border_color = Color(0.3, 0.29, 0.26, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="CharacterCustomizer" type="Control"]
 visible = false
@@ -32,37 +29,28 @@ script = ExtResource("1_cc")
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = 34.0
-offset_top = 24.0
-offset_right = 476.0
-offset_bottom = -24.0
+offset_left = 32.0
+offset_top = 30.0
+offset_right = 432.0
+offset_bottom = -30.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
 
 [node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 5
 
 [node name="Title" type="Label" parent="Panel/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.93, 0.84, 0.62, 1)
-theme_override_font_sizes/font_size = 23
-text = "CREATE YOUR SURVIVOR"
-
-[node name="Subtitle" type="Label" parent="Panel/Margin/VBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.66, 0.64, 0.6, 1)
-theme_override_font_sizes/font_size = 12
-text = "This is how you will enter the outbreak."
-
-[node name="TopSeparator" type="HSeparator" parent="Panel/Margin/VBox"]
-layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.85, 0.66, 1)
+theme_override_font_sizes/font_size = 19
+text = "SURVIVOR"
 
 [node name="Scroll" type="ScrollContainer" parent="Panel/Margin/VBox"]
 layout_mode = 2
@@ -76,8 +64,8 @@ theme_override_constants/separation = 4
 
 [node name="IdentityLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.82, 0.66, 0.36, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.55, 0.54, 0.51, 1)
+theme_override_font_sizes/font_size = 10
 text = "IDENTITY"
 
 [node name="NameRow" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields"]
@@ -85,17 +73,17 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="NameLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/NameRow"]
-custom_minimum_size = Vector2(76, 0)
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Name"
 vertical_alignment = 1
 
 [node name="NameEdit" type="LineEdit" parent="Panel/Margin/VBox/Scroll/Fields/NameRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(0, 27)
+custom_minimum_size = Vector2(0, 26)
 max_length = 18
 placeholder_text = "John"
 
@@ -104,17 +92,17 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="SurnameLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/SurnameRow"]
-custom_minimum_size = Vector2(76, 0)
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Surname"
 vertical_alignment = 1
 
 [node name="SurnameEdit" type="LineEdit" parent="Panel/Margin/VBox/Scroll/Fields/SurnameRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(0, 27)
+custom_minimum_size = Vector2(0, 26)
 max_length = 22
 placeholder_text = "Doe"
 
@@ -123,22 +111,33 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="GenderLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/GenderRow"]
-custom_minimum_size = Vector2(76, 0)
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Gender"
 vertical_alignment = 1
 
-[node name="GenderOption" type="OptionButton" parent="Panel/Margin/VBox/Scroll/Fields/GenderRow"]
+[node name="MaleButton" type="Button" parent="Panel/Margin/VBox/Scroll/Fields/GenderRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(0, 27)
+custom_minimum_size = Vector2(0, 26)
+toggle_mode = true
+theme_type_variation = &"FlatButton"
+text = "male"
+
+[node name="FemaleButton" type="Button" parent="Panel/Margin/VBox/Scroll/Fields/GenderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 26)
+toggle_mode = true
+theme_type_variation = &"FlatButton"
+text = "female"
 
 [node name="BodyLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.82, 0.66, 0.36, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.55, 0.54, 0.51, 1)
+theme_override_font_sizes/font_size = 10
 text = "BODY"
 
 [node name="WeightRow" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields"]
@@ -146,33 +145,22 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="WeightLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/WeightRow"]
-custom_minimum_size = Vector2(76, 0)
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 14
-text = "Weight"
+theme_override_font_sizes/font_size = 13
+text = "Weight (kg)"
 vertical_alignment = 1
 
-[node name="WeightSlider" type="HSlider" parent="Panel/Margin/VBox/Scroll/Fields/WeightRow"]
+[node name="WeightButtons" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields/WeightRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = 45.0
-max_value = 140.0
-value = 75.0
-
-[node name="WeightValue" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/WeightRow"]
-custom_minimum_size = Vector2(58, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.89, 0.85, 1)
-theme_override_font_sizes/font_size = 14
-text = "75 kg"
-horizontal_alignment = 2
+theme_override_constants/separation = 4
 
 [node name="BloodLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.62, 0.58, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.55, 0.55, 0.52, 1)
+theme_override_font_sizes/font_size = 10
 text = "Blood volume: 5.4 L"
 
 [node name="HeightRow" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields"]
@@ -180,34 +168,22 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="HeightLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/HeightRow"]
-custom_minimum_size = Vector2(76, 0)
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 14
-text = "Height"
+theme_override_font_sizes/font_size = 13
+text = "Height (m)"
 vertical_alignment = 1
 
-[node name="HeightSlider" type="HSlider" parent="Panel/Margin/VBox/Scroll/Fields/HeightRow"]
+[node name="HeightButtons" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields/HeightRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = 1.55
-max_value = 1.95
-step = 0.01
-value = 1.83
-
-[node name="HeightValue" type="Label" parent="Panel/Margin/VBox/Scroll/Fields/HeightRow"]
-custom_minimum_size = Vector2(58, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.89, 0.85, 1)
-theme_override_font_sizes/font_size = 14
-text = "1.83 m"
-horizontal_alignment = 2
+theme_override_constants/separation = 4
 
 [node name="SkinLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.77, 0.74, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 12
 text = "Skin tone"
 
 [node name="SkinRow" type="HBoxContainer" parent="Panel/Margin/VBox/Scroll/Fields"]
@@ -216,8 +192,8 @@ theme_override_constants/separation = 6
 
 [node name="OutfitLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Fields"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.82, 0.66, 0.36, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.55, 0.54, 0.51, 1)
+theme_override_font_sizes/font_size = 10
 text = "OUTFIT"
 
 [node name="OutfitGrid" type="GridContainer" parent="Panel/Margin/VBox/Scroll/Fields"]
@@ -225,9 +201,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 4
 columns = 2
-
-[node name="BottomSeparator" type="HSeparator" parent="Panel/Margin/VBox"]
-layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/Margin/VBox"]
 layout_mode = 2
@@ -237,35 +210,17 @@ theme_override_constants/separation = 6
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 12
 text = "randomize"
 
 [node name="BackButton" type="Button" parent="Panel/Margin/VBox/Buttons"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 12
 text = "back"
 
 [node name="StartButton" type="Button" parent="Panel/Margin/VBox/Buttons"]
 layout_mode = 2
-custom_minimum_size = Vector2(104, 30)
-theme_override_font_sizes/font_size = 14
+custom_minimum_size = Vector2(96, 30)
+theme_override_font_sizes/font_size = 13
 text = "START"
-
-[node name="Hint" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -34.0
-offset_right = -34.0
-offset_bottom = -14.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.75, 0.73, 0.68, 0.85)
-theme_override_font_sizes/font_size = 12
-text = "drag the character to rotate"
-horizontal_alignment = 2
