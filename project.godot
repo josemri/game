@@ -23,6 +23,10 @@ config/icon="res://icon.svg"
 
 GameProfile="*res://scripts/game_profile.gd"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/translations.en.translation", "res://translations/translations.es.translation", "res://translations/translations.ca.translation", "res://translations/translations.bg.translation", "res://translations/translations.de.translation", "res://translations/translations.fr.translation")
+
 [display]
 
 window/size/window_width_override=1280

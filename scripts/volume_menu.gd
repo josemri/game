@@ -223,7 +223,11 @@ func _value_angle() -> float:
 	return -VALUE_TRAVEL * 0.5 + v * VALUE_TRAVEL
 
 func _update_labels() -> void:
-	_select_label.text = _current_bus_name().to_upper()
+	var localized := tr("VOL_MASTER")
+	if _bus == 0 and localized != "VOL_MASTER":
+		_select_label.text = localized
+	else:
+		_select_label.text = _current_bus_name().to_upper()
 	var v: float = _volumes.get(_current_bus_name(), 1.0)
 	_value_label.text = "%d%%" % roundi(v * 100.0)
 	_update_label_colors()

@@ -163,6 +163,14 @@ func _run() -> void:
 	await _wait(0.8)
 	_check_all_at_base("7) todos en su sitio")
 
+	# --- 8) El idioma elegido queda marcado en el texto del libro ---
+	_check("8) el idioma guardado se resalta",
+		(langs.get_node("language6/Label3D") as Label3D).modulate
+		== langs.LABEL_SELECTED)
+	_check("8) los demás idiomas quedan en color normal",
+		(langs.get_node("language1/Label3D") as Label3D).modulate
+		== langs.LABEL_NORMAL)
+
 	print("")
 	print("%d comprobaciones, %d fallos" % [checks, failures])
 	quit(1 if failures > 0 else 0)

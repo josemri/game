@@ -1,0 +1,84 @@
+keys,en,es,ca,bg,de,fr
+MENU_PLAY,Play,Jugar,Jugar,Играй,Spielen,Jouer
+MENU_OPTIONS,Options,Opciones,Opcions,Опции,Optionen,Options
+MENU_CREDITS,Credits,Créditos,Crèdits,Кредити,Credits,Crédits
+MENU_EXIT,Exit,Salir,Sortir,Изход,Beenden,Quitter
+MENU_VOLUME,Volume,Volumen,Volum,Сила на звука,Lautstärke,Volume
+MENU_LANGUAGE,Language,Idioma,Idioma,Език,Sprache,Langue
+MENU_BRIGHTNESS,Brightness,Brillo,Lluminositat,Яркост,Helligkeit,Luminosité
+MENU_BACK,Back,Atrás,Enrere,Назад,Zurück,Retour
+BTN_START,START,EMPEZAR,INICIAR,СТАРТ,START,DÉMARRER
+BTN_RANDOMIZE,randomize,aleatorio,aleatori,случаен,zufällig,aléatoire
+CUSTOM_TITLE,SURVIVOR,SOBREVIVIENTE,SOBREVIVENT,ОЦЕЛЯЛ,ÜBERLEBENDER,SURVIVANT
+CUSTOM_IDENTITY,IDENTITY,IDENTIDAD,IDENTITAT,ИДЕНТИЧНОСТ,IDENTITÄT,IDENTITÉ
+CUSTOM_BODY,BODY,CUERPO,COS,ТЯЛО,KÖRPER,CORPS
+CUSTOM_OUTFIT,OUTFIT,ROPA,ROBA,ОБЛЕКЛО,AUSRÜSTUNG,TENUE
+CUSTOM_NAME,Name,Nombre,Nom,Име,Name,Nom
+CUSTOM_SURNAME,Surname,Apellido,Cognom,Фамилия,Nachname,Nom de famille
+CUSTOM_GENDER,Gender,Género,Gènere,Пол,Geschlecht,Genre
+CUSTOM_MALE,male,hombre,home,мъж,männlich,homme
+CUSTOM_FEMALE,female,mujer,dona,жена,weiblich,femme
+CUSTOM_WEIGHT,Weight (kg),Peso (kg),Pes (kg),Тегло (кг),Gewicht (kg),Poids (kg)
+CUSTOM_HEIGHT,Height (m),Altura (m),Alçada (m),Височина (м),Größe (m),Taille (m)
+CUSTOM_SKIN,Skin tone,Tono de piel,To de pell,Цвят на кожата,Hautfarbe,Teint
+CUSTOM_BLOOD,Blood volume: %.1f L  ·  build: %s,Volumen sanguíneo: %.1f L  ·  complexión: %s,Volum sanguini: %.1f L  ·  constitució: %s,Кръвен обем: %.1f L  ·  тяло: %s,Blutvolumen: %.1f L  ·  Typ: %s,Volume sanguin : %.1f L  ·  morpho : %s
+BUILD_SLIM,slim,delgado,prim,слаб,schlank,mince
+BUILD_NORMAL,normal,normal,normal,нормален,normal,normal
+BUILD_HEAVY,heavy,grueso,gras,тежък,schwer,lourd
+LANG_SPANISH,spanish,español,espanyol,испански,Spanisch,espagnol
+LANG_CATALAN,catalan,catalán,català,каталонски,Katalanisch,catalan
+LANG_ENGLISH,english,inglés,anglès,английски,Englisch,anglais
+LANG_BULGARIAN,bulgarian,búlgaro,búlgar,български,Bulgarisch,bulgare
+LANG_GERMAN,german,alemán,alemany,немски,Deutsch,allemand
+LANG_FRENCH,french,francés,francès,френски,Französisch,français
+VOL_MASTER,MASTER,MAESTRO,MÀSTER,ГЛАВЕН,MASTER,MAÎTRE
+PLACEHOLDER_NAME,John,Juan,Joan,Иван,Johann,Jean
+PLACEHOLDER_SURNAME,Doe,Pérez,Pérez,Петров,Müller,Martin
+OUTFIT_1,blue polo,polo azul,polo blau,синя поло блуза,blaues Polo,polo bleu
+OUTFIT_2,blue t-shirt,camiseta azul,samarreta blava,синя тениска,blaues T-Shirt,t-shirt bleu
+OUTFIT_3,grey polo,polo gris,polo gris,сиво поло,graues Polo,polo gris
+OUTFIT_4,khaki polo,polo caqui,polo caqui,поло каки,khakifarbenes Polo,polo kaki
+OUTFIT_5,red shirt,camisa roja,camisa vermella,червена риза,rotes Hemd,chemise rouge
+OUTFIT_6,grey v-neck,cuello pico gris,coll en V gris,сива V-яка,grauer V-Ausschnitt,col en V gris
+OUTFIT_7,white polo,polo blanco,polo blanc,бяло поло,weißes Polo,polo blanc
+OUTFIT_8,white shirt,camisa blanca,camisa blanca,бяла риза,weißes Hemd,chemise blanche
+SKIN_FAIR,fair,clara,clara,светла,hell,clair
+SKIN_LIGHT,light,media,mitjana,средна,mittel,moyen
+SKIN_TAN,tan,bronceada,bronzejada,загоряла,gebräunt,hâlé
+SKIN_BROWN,brown,morena,morena,тъмна,braun,brun
+SKIN_DEEP,deep,oscura,fosca,много тъмна,dunkel,foncé
+TIP_ADV,ADV,VEN,AVANT.,ПРЕДИМ.,VORTEIL,AVANT.
+TIP_DIS,DIS,DES,DESAV.,НЕДОСТ.,NACHTEIL,INCONV.
+W55_NAME,55 kg — very light,55 kg — muy ligero,55 kg — molt lleuger,55 кг — много лека,55 kg — sehr leicht,55 kg — très léger
+W55_ADV,hard to hit · quiet,difícil de alcanzar · silencioso,difícil d'encertar · silenciós,труден за уцелване · тих,schwer zu treffen · leise,difficile à toucher · silencieux
+W55_DIS,low blood volume · weak melee,poco volumen sanguíneo · cuerpo a cuerpo débil,poc volum sanguini · cos a cos feble,малък кръвен обем · слаб в близък бой,wenig Blutvolumen · schwacher Nahkampf,faible volume sanguin · corps à corps faible
+W65_NAME,65 kg — light,65 kg — ligero,65 kg — lleuger,65 кг — лека,65 kg — leicht,65 kg — léger
+W65_ADV,agile · quiet,ágil · silencioso,àgil · silenciós,пъргав · тих,flink · leise,agile · silencieux
+W65_DIS,low blood volume,poco volumen sanguíneo,poc volum sanguini,малък кръвен обем,wenig Blutvolumen,faible volume sanguin
+W75_NAME,75 kg — average,75 kg — medio,75 kg — mitjà,75 кг — средно,75 kg — durchschnittlich,75 kg — moyen
+W75_ADV,balanced,equilibrado,equilibrat,балансиран,ausgeglichen,équilibré
+W75_DIS,no special bonus,sin bonus especial,sense bonus especial,без специален бонус,kein besonderer Bonus,aucun bonus spécial
+W90_NAME,90 kg — solid,90 kg — corpulento,90 kg — corpulent,90 кг — солидна,90 kg — kräftig,90 kg — solide
+W90_ADV,more blood · stronger shoves,más sangre · empujones fuertes,més sang · empentes fortes,повече кръв · силни тласъци,mehr Blut · stärkere Stöße,plus de sang · poussées fortes
+W90_DIS,a bit slower,algo más lento,una mica més lent,малко по-бавен,etwas langsamer,un peu plus lent
+W110_NAME,110 kg — heavy,110 kg — pesado,110 kg — pesat,110 кг — тежка,110 kg — schwer,110 kg — lourd
+W110_ADV,high blood volume · strong melee,alto volumen sanguíneo · cuerpo a cuerpo fuerte,alt volum sanguini · cos a cos fort,голям кръвен обем · силен близък бой,hohes Blutvolumen · starker Nahkampf,volume sanguin élevé · corps à corps puissant
+W110_DIS,slow · noisy · easier to hit,lento · ruidoso · fácil de alcanzar,lent · sorollós · fàcil d'encertar,бавен · шумен · лесен за уцелване,langsam · laut · leichter zu treffen,lent · bruyant · facile à toucher
+W135_NAME,135 kg — very heavy,135 kg — muy pesado,135 kg — molt pesat,135 кг — много тежка,135 kg — sehr schwer,135 kg — très lourd
+W135_ADV,maximum blood volume,volumen sanguíneo máximo,volum sanguini màxim,максимален кръвен обем,maximales Blutvolumen,volume sanguin maximal
+W135_DIS,very slow · noisy · stamina drains fast,muy lento · ruidoso · resistencia baja rápido,molt lent · sorollós · resistència baixa ràpid,много бавен · шумен · издръжливостта пада бързо,sehr langsam · laut · Ausdauer sinkt schnell,très lent · bruyant · endurance faible
+H155_NAME,1.55 m — short,1.55 m — bajo,1.55 m — baix,1.55 м — нисък,1.55 m — klein,1.55 m — petit
+H155_ADV,hard to hit · fits through gaps,difícil de alcanzar · cabe por huecos,difícil d'encertar · passa per forats,труден за уцелване · минава през процепи,schwer zu treffen · passt durch Lücken,difficile à toucher · passe les interstices
+H155_DIS,less reach · lower eye level,menos alcance · vista más baja,menys abast · vista més baixa,по-малък обсег · по-нисък поглед,weniger Reichweite · niedrigere Sicht,portée réduite · vue plus basse
+H165_NAME,1.65 m — compact,1.65 m — compacto,1.65 m — compacte,1.65 м — компактен,1.65 m — kompakt,1.65 m — compact
+H165_ADV,evasive,esquivo,esquiu,избеглив,wendig,esquiveur
+H165_DIS,less reach,menos alcance,menys abast,по-малък обсег,weniger Reichweite,portée réduite
+H175_NAME,1.75 m — average,1.75 m — medio,1.75 m — mitjà,1.75 м — среден,1.75 m — durchschnittlich,1.75 m — moyen
+H175_ADV,balanced,equilibrado,equilibrat,балансиран,ausgeglichen,équilibré
+H175_DIS,no special bonus,sin bonus especial,sense bonus especial,без специален бонус,kein besonderer Bonus,aucun bonus spécial
+H185_NAME,1.85 m — tall,1.85 m — alto,1.85 m — alt,1.85 м — висок,1.85 m — groß,1.85 m — grand
+H185_ADV,more reach · better view,más alcance · mejor vista,més abast · millor vista,по-голям обсег · по-добър изглед,mehr Reichweite · bessere Sicht,portée accrue · meilleure vue
+H185_DIS,easier to hit,fácil de alcanzar,fàcil d'encertar,лесен за уцелване,leichter zu treffen,facile à toucher
+H195_NAME,1.95 m — very tall,1.95 m — muy alto,1.95 m — molt alt,1.95 м — много висок,1.95 m — sehr groß,1.95 m — très grand
+H195_ADV,maximum reach,alcance máximo,abast màxim,максимален обсег,maximale Reichweite,portée maximale
+H195_DIS,easy to hit · poor fit in tight spaces,fácil de alcanzar · mal encaje en espacios estrechos,fàcil d'encertar · mal encaix en espais estrets,лесен за уцелване · неудобен в тесни пространства,leicht zu treffen · passt schlecht in enge Räume,facile à toucher · mal à l'aise dans les espaces étroits

@@ -91,7 +91,7 @@ func _run() -> void:
 	_check("2) etiquetas visibles en la vista",
 		vm._select_label.visible and vm._value_label.visible)
 	_check("2) arranca en MASTER al 100%",
-		vm._select_label.text == "MASTER" and vm._value_label.text == "100%")
+		(vm._select_label.text == "MASTER" or vm._select_label.text == tr("VOL_MASTER")) and vm._value_label.text == "100%")
 
 	# --- 3) Detección de las ruedas en pantalla ---
 	var c_value: Vector2 = cam.unproject_position(vm._center["value"])
@@ -158,14 +158,14 @@ func _run() -> void:
 	_scroll("selector", MOUSE_BUTTON_WHEEL_DOWN)
 	_check("6) ahora en VOICE", vm._select_label.text == "VOICE")
 	_scroll("selector", MOUSE_BUTTON_WHEEL_DOWN)
-	_check("6) vuelve a MASTER", vm._select_label.text == "MASTER")
+	_check("6) vuelve a MASTER", vm._select_label.text == "MASTER" or vm._select_label.text == tr("VOL_MASTER"))
 	_check("6) la rueda de valor vuelve a Master (5 %)", vm._value_label.text == "5%")
 	_scroll("selector", MOUSE_BUTTON_WHEEL_UP)
 	_check("6) la rueda selectora también sube", vm._select_label.text == "VOICE")
 
 	# --- 7) Cambiar de bus no arrastra el volumen de los demás ---
 	_scroll("selector", MOUSE_BUTTON_WHEEL_DOWN) # VOICE -> MASTER
-	_check("7) MASTER seleccionado otra vez", vm._select_label.text == "MASTER")
+	_check("7) MASTER seleccionado otra vez", vm._select_label.text == "MASTER" or vm._select_label.text == tr("VOL_MASTER"))
 	_check("7) Music sigue al 100 %", absf(_db(1) - linear_to_db(1.0)) < 0.01)
 	_check("7) SFX sigue al 100 %", absf(_db(2) - linear_to_db(1.0)) < 0.01)
 	_check("7) Voice sigue al 100 %", absf(_db(3) - linear_to_db(1.0)) < 0.01)

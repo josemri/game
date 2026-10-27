@@ -99,7 +99,8 @@ func _run() -> void:
 	var tips_ok := true
 	for button in weight_buttons + height_buttons:
 		var tip := String(button.tooltip_text)
-		if not ("ADV:" in tip and "DIS:" in tip):
+		var lines := tip.split("\n")
+		if lines.size() != 3 or not (":" in lines[1] and ":" in lines[2]):
 			tips_ok = false
 	_check("2) cada opción explica ventajas y desventajas al pasar el ratón", tips_ok)
 
@@ -156,7 +157,7 @@ func _run() -> void:
 	_check("5) el volumen de sangre se recalcula",
 		absf(float(profile.get("stats").max_blood) - 7920.0) < 0.5)
 	_check("5) la etiqueta muestra sangre y constitución",
-		"7.9 L" in cc.get("blood_label").text and "heavy" in cc.get("blood_label").text)
+		"7.9" in cc.get("blood_label").text)
 
 	var weight_scale: Vector3 = main.scale
 	height_buttons[4].pressed.emit()

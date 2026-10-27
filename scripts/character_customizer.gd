@@ -26,34 +26,31 @@ const RANDOM_SURNAMES := ["Vega", "Moore", "Reed", "Carter", "Hayes", "Brooks", 
 const BASE_HEIGHT := 1.85
 
 ## Listas cortas de peso/altura. El tooltip explica la ventaja y la
-## desventaja de cada punto al pasar el ratón.
+## desventaja de cada punto al pasar el ratón. Los textos se traducen
+## con las claves W*_NAME/W*_ADV/W*_DIS y H*_NAME/H*_ADV/H*_DIS.
 const WEIGHT_OPTIONS := [
-	{"value": 55.0, "label": "55",
-		"tip": "55 kg — very light\nADV: hard to hit · quiet\nDIS: low blood volume · weak melee"},
-	{"value": 65.0, "label": "65",
-		"tip": "65 kg — light\nADV: agile · quiet\nDIS: low blood volume"},
-	{"value": 75.0, "label": "75",
-		"tip": "75 kg — average\nADV: balanced\nDIS: no special bonus"},
-	{"value": 90.0, "label": "90",
-		"tip": "90 kg — solid\nADV: more blood · stronger shoves\nDIS: a bit slower"},
-	{"value": 110.0, "label": "110",
-		"tip": "110 kg — heavy\nADV: high blood volume · strong melee\nDIS: slow · noisy · easier to hit"},
-	{"value": 135.0, "label": "135",
-		"tip": "135 kg — very heavy\nADV: maximum blood volume\nDIS: very slow · noisy · stamina drains fast"},
+	{"value": 55.0, "label": "55", "key": "W55"},
+	{"value": 65.0, "label": "65", "key": "W65"},
+	{"value": 75.0, "label": "75", "key": "W75"},
+	{"value": 90.0, "label": "90", "key": "W90"},
+	{"value": 110.0, "label": "110", "key": "W110"},
+	{"value": 135.0, "label": "135", "key": "W135"},
 ]
 
 const HEIGHT_OPTIONS := [
-	{"value": 1.55, "label": "1.55",
-		"tip": "1.55 m — short\nADV: hard to hit · fits through gaps\nDIS: less reach · lower eye level"},
-	{"value": 1.65, "label": "1.65",
-		"tip": "1.65 m — compact\nADV: evasive\nDIS: less reach"},
-	{"value": 1.75, "label": "1.75",
-		"tip": "1.75 m — average\nADV: balanced\nDIS: no special bonus"},
-	{"value": 1.85, "label": "1.85",
-		"tip": "1.85 m — tall\nADV: more reach · better view\nDIS: easier to hit"},
-	{"value": 1.95, "label": "1.95",
-		"tip": "1.95 m — very tall\nADV: maximum reach\nDIS: easy to hit · poor fit in tight spaces"},
+	{"value": 1.55, "label": "1.55", "key": "H155"},
+	{"value": 1.65, "label": "1.65", "key": "H165"},
+	{"value": 1.75, "label": "1.75", "key": "H175"},
+	{"value": 1.85, "label": "1.85", "key": "H185"},
+	{"value": 1.95, "label": "1.95", "key": "H195"},
 ]
+
+const OUTFIT_KEYS := [
+	"OUTFIT_1", "OUTFIT_2", "OUTFIT_3", "OUTFIT_4",
+	"OUTFIT_5", "OUTFIT_6", "OUTFIT_7", "OUTFIT_8",
+]
+
+const SKIN_KEYS := ["SKIN_FAIR", "SKIN_LIGHT", "SKIN_TAN", "SKIN_BROWN", "SKIN_DEEP"]
 
 @onready var scroll: ScrollContainer = $Panel/Margin/VBox/Scroll
 @onready var name_edit: LineEdit = $Panel/Margin/VBox/Scroll/Fields/NameRow/NameEdit
@@ -92,6 +89,8 @@ var _fade_tween: Tween
 var _rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
+	_load_translations()
+	_load_language()
 	_profile = get_node_or_null("/root/GameProfile")
 	if _profile == null:
 		# Fallback para ejecuciones con -s (tests) donde el autoload no
@@ -99,6 +98,7 @@ func _ready() -> void:
 		_profile = load("res://scripts/game_profile.gd").new()
 		add_child(_profile)
 	_rng.randomize()
+	_localize_static()
 	_build_styles()
 	_build_outfit_buttons()
 	_build_skin_buttons()
@@ -115,6 +115,73 @@ func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
 	visible = false
 
+
+func _load_translations() -> void:
+	# Las traducciones se importan como un .translation por idioma.
+	for locale in ["en", "es", "ca", "bg", "de", "fr"]:
+		var path := "res://translations/translations.%s.translation" % locale
+		if not ResourceLoader.exists(path):
+			continue
+		var res := load(path)
+		if res is Translation:
+			TranslationServer.add_translation(res)
+
+
+func _load_language() -> void:
+	var config := ConfigFile.new()
+	var locale := "es"
+	if config.load("user://settings.cfg") == OK:
+		locale = String(config.get_value("language", "locale", "es"))
+	TranslationServer.set_locale(locale)
+
+
+func _localize_static() -> void:
+	var title := get_node_or_null("Panel/Margin/VBox/Title") as Label
+	if title: title.text = tr("CUSTOM_TITLE")
+	var id_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/IdentityLabel") as Label
+	if id_label: id_label.text = tr("CUSTOM_IDENTITY")
+	var body_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/BodyLabel") as Label
+	if body_label: body_label.text = tr("CUSTOM_BODY")
+	var outfit_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/OutfitLabel") as Label
+	if outfit_label: outfit_label.text = tr("CUSTOM_OUTFIT")
+	var name_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/NameRow/NameLabel") as Label
+	if name_label: name_label.text = tr("CUSTOM_NAME")
+	var surname_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/SurnameRow/SurnameLabel") as Label
+	if surname_label: surname_label.text = tr("CUSTOM_SURNAME")
+	var gender_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/GenderRow/GenderLabel") as Label
+	if gender_label: gender_label.text = tr("CUSTOM_GENDER")
+	var weight_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/WeightRow/WeightLabel") as Label
+	if weight_label: weight_label.text = tr("CUSTOM_WEIGHT")
+	var height_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/HeightRow/HeightLabel") as Label
+	if height_label: height_label.text = tr("CUSTOM_HEIGHT")
+	var skin_label := get_node_or_null("Panel/Margin/VBox/Scroll/Fields/SkinLabel") as Label
+	if skin_label: skin_label.text = tr("CUSTOM_SKIN")
+	if male_button: male_button.text = tr("CUSTOM_MALE")
+	if female_button: female_button.text = tr("CUSTOM_FEMALE")
+	if random_button: random_button.text = tr("BTN_RANDOMIZE")
+	if back_button: back_button.text = tr("MENU_BACK")
+	if start_button: start_button.text = tr("BTN_START")
+	if name_edit: name_edit.placeholder_text = tr("PLACEHOLDER_NAME")
+	if surname_edit: surname_edit.placeholder_text = tr("PLACEHOLDER_SURNAME")
+
+
+## Vuelve a aplicar los textos generados (ropa, tonos, tooltips) cuando
+## el idioma cambia entre una apertura y la siguiente.
+func _refresh_dynamic_texts() -> void:
+	for i in range(_outfit_buttons.size()):
+		var key: String = OUTFIT_KEYS[i] if i < OUTFIT_KEYS.size() else "OUTFIT_1"
+		var button: Button = _outfit_buttons[i]
+		button.text = tr(key)
+		button.tooltip_text = tr(key)
+	for i in range(_skin_buttons.size()):
+		var key: String = SKIN_KEYS[i] if i < SKIN_KEYS.size() else "SKIN_FAIR"
+		_skin_buttons[i].tooltip_text = tr(key)
+	for i in range(_weight_buttons.size()):
+		_weight_buttons[i].tooltip_text = _choice_tip(String(WEIGHT_OPTIONS[i]["key"]))
+	for i in range(_height_buttons.size()):
+		_height_buttons[i].tooltip_text = _choice_tip(String(HEIGHT_OPTIONS[i]["key"]))
+	_update_blood_label()
+
 ## Aplica el aspecto guardado al personaje sin abrir el panel: así el
 ## personaje del menú ya lleva la ropa y el cuerpo elegidos antes de
 ## pulsar play.
@@ -130,6 +197,10 @@ func prepare(character: Node3D) -> void:
 func open(character: Node3D) -> void:
 	if character == null:
 		return
+	_load_translations()
+	_load_language()
+	_localize_static()
+	_refresh_dynamic_texts()
 	_bind_character(character)
 	if _character == null:
 		return
@@ -163,6 +234,8 @@ func commit_profile() -> void:
 		new_surname = "Doe"
 	name_edit.text = new_name
 	surname_edit.text = new_surname
+	name_edit.placeholder_text = tr("PLACEHOLDER_NAME")
+	surname_edit.placeholder_text = tr("PLACEHOLDER_SURNAME")
 	_profile.set_names(new_name, new_surname)
 	_profile.save_profile()
 
@@ -191,6 +264,14 @@ func _sync_from_profile() -> void:
 	_syncing = true
 	name_edit.text = _profile.player_name
 	surname_edit.text = _profile.surname
+	if name_edit.text.strip_edges() == "":
+		name_edit.placeholder_text = tr("PLACEHOLDER_NAME")
+	else:
+		name_edit.placeholder_text = tr("PLACEHOLDER_NAME")
+	if surname_edit.text.strip_edges() == "":
+		surname_edit.placeholder_text = tr("PLACEHOLDER_SURNAME")
+	else:
+		surname_edit.placeholder_text = tr("PLACEHOLDER_SURNAME")
 	var weight_index := _nearest_option(WEIGHT_OPTIONS, float(_profile.weight))
 	var height_index := _nearest_option(HEIGHT_OPTIONS, float(_profile.height))
 	# El perfil guardado puede venir de la versión con sliders: se ajusta
@@ -297,8 +378,8 @@ func _on_gender_pressed(index: int) -> void:
 func _on_randomize_pressed() -> void:
 	_syncing = true
 	var new_gender := _rng.randi_range(0, 1)
-	var new_name: String = RANDOM_NAMES[_rng.randi_range(0, RANDOM_NAMES.size() - 1)]
-	var new_surname: String = RANDOM_SURNAMES[_rng.randi_range(0, RANDOM_SURNAMES.size() - 1)]
+	var new_name: String = tr("PLACEHOLDER_NAME") if _rng.randf() < 0.5 else RANDOM_NAMES[_rng.randi_range(0, RANDOM_NAMES.size() - 1)]
+	var new_surname: String = tr("PLACEHOLDER_SURNAME") if _rng.randf() < 0.5 else RANDOM_SURNAMES[_rng.randi_range(0, RANDOM_SURNAMES.size() - 1)]
 	var weight_index := _rng.randi_range(0, WEIGHT_OPTIONS.size() - 1)
 	var height_index := _rng.randi_range(0, HEIGHT_OPTIONS.size() - 1)
 	_profile.set_gender(new_gender)
@@ -309,6 +390,8 @@ func _on_randomize_pressed() -> void:
 	_profile.set_skin_tone(_rng.randi_range(0, _profile.skin_tone_list().size() - 1))
 	name_edit.text = new_name
 	surname_edit.text = new_surname
+	name_edit.placeholder_text = tr("PLACEHOLDER_NAME")
+	surname_edit.placeholder_text = tr("PLACEHOLDER_SURNAME")
 	_syncing = false
 	_update_blood_label()
 	_apply_appearance()
@@ -331,7 +414,12 @@ func _update_blood_label() -> void:
 		build = "slim"
 	elif _profile.weight > 95.0:
 		build = "heavy"
-	blood_label.text = "Blood volume: %.1f L  ·  build: %s" % [liters, build]
+	var build_key := "BUILD_NORMAL"
+	if build == "slim":
+		build_key = "BUILD_SLIM"
+	elif build == "heavy":
+		build_key = "BUILD_HEAVY"
+	blood_label.text = tr("CUSTOM_BLOOD") % [liters, tr(build_key)]
 
 func _show() -> void:
 	visible = true
@@ -350,30 +438,30 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _build_styles() -> void:
 	_outfit_normal = _flat_style(
-		Color(0.11, 0.115, 0.13, 0.95), Color(0.24, 0.24, 0.27), 1, 4)
+		Color(0.09, 0.095, 0.09, 0.98), Color(0.28, 0.28, 0.24), 1, 0)
 	_outfit_hover = _flat_style(
-		Color(0.17, 0.17, 0.2, 0.98), Color(0.4, 0.4, 0.44), 1, 4)
+		Color(0.13, 0.14, 0.12, 1.0), Color(0.42, 0.41, 0.35), 1, 0)
 	_outfit_pressed = _flat_style(
-		Color(0.22, 0.22, 0.26, 1.0), Color(0.5, 0.5, 0.54), 1, 4)
+		Color(0.16, 0.17, 0.15, 1.0), Color(0.52, 0.5, 0.42), 1, 0)
 	_outfit_selected = _flat_style(
-		Color(0.23, 0.19, 0.11, 0.98), Color(0.86, 0.68, 0.32), 2, 4)
+		Color(0.16, 0.14, 0.09, 1.0), Color(0.78, 0.72, 0.48), 1, 0)
 	_outfit_selected_hover = _flat_style(
-		Color(0.3, 0.25, 0.14, 1.0), Color(0.96, 0.78, 0.4), 2, 4)
+		Color(0.19, 0.17, 0.11, 1.0), Color(0.88, 0.8, 0.56), 1, 0)
 
 	var start_normal := _flat_style(
-		Color(0.62, 0.46, 0.2, 1.0), Color(0.92, 0.75, 0.42), 1, 4)
+		Color(0.58, 0.5, 0.28, 1.0), Color(0.86, 0.76, 0.5), 1, 0)
 	var start_hover := _flat_style(
-		Color(0.72, 0.54, 0.24, 1.0), Color(1.0, 0.85, 0.55), 1, 4)
+		Color(0.68, 0.58, 0.32, 1.0), Color(0.92, 0.82, 0.58), 1, 0)
 	var start_pressed := _flat_style(
-		Color(0.5, 0.37, 0.15, 1.0), Color(0.92, 0.75, 0.42), 1, 4)
+		Color(0.48, 0.42, 0.24, 1.0), Color(0.82, 0.72, 0.46), 1, 0)
 	start_button.add_theme_stylebox_override("normal", start_normal)
 	start_button.add_theme_stylebox_override("hover", start_hover)
 	start_button.add_theme_stylebox_override("pressed", start_pressed)
-	start_button.add_theme_color_override("font_color", Color(0.1, 0.08, 0.04))
-	start_button.add_theme_color_override("font_hover_color", Color(0.05, 0.04, 0.02))
-	start_button.add_theme_color_override("font_pressed_color", Color(0.1, 0.08, 0.04))
-	back_button.add_theme_color_override("font_color", Color(0.82, 0.8, 0.76))
-	random_button.add_theme_color_override("font_color", Color(0.72, 0.85, 0.7))
+	start_button.add_theme_color_override("font_color", Color(0.09, 0.08, 0.05))
+	start_button.add_theme_color_override("font_hover_color", Color(0.06, 0.05, 0.03))
+	start_button.add_theme_color_override("font_pressed_color", Color(0.09, 0.08, 0.05))
+	back_button.add_theme_color_override("font_color", Color(0.78, 0.76, 0.7))
+	random_button.add_theme_color_override("font_color", Color(0.72, 0.76, 0.66))
 	for button in [male_button, female_button]:
 		button.add_theme_stylebox_override("normal", _outfit_normal)
 		button.add_theme_stylebox_override("hover", _outfit_hover)
@@ -381,27 +469,35 @@ func _build_styles() -> void:
 		button.add_theme_stylebox_override("hover_pressed", _outfit_selected_hover)
 		button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 		button.add_theme_font_size_override("font_size", 12)
-		button.add_theme_color_override("font_color", Color(0.82, 0.81, 0.77))
-		button.add_theme_color_override("font_hover_color", Color(1, 1, 1))
-		button.add_theme_color_override("font_pressed_color", Color(0.98, 0.9, 0.72))
-		button.add_theme_color_override("font_hover_pressed_color", Color(1, 1, 1))
+		button.add_theme_color_override("font_color", Color(0.8, 0.78, 0.72))
+		button.add_theme_color_override("font_hover_color", Color(0.9, 0.88, 0.8))
+		button.add_theme_color_override("font_pressed_color", Color(0.92, 0.84, 0.6))
+		button.add_theme_color_override("font_hover_pressed_color", Color(0.94, 0.86, 0.62))
 
 func _build_choice_buttons(container: Container, options: Array, handler: Callable) -> Array:
 	var buttons: Array = []
 	for i in range(options.size()):
 		var button := Button.new()
 		button.text = String(options[i]["label"])
-		button.tooltip_text = String(options[i]["tip"])
-		button.custom_minimum_size = Vector2(0, 26)
+		button.tooltip_text = _choice_tip(String(options[i]["key"]))
+		button.custom_minimum_size = Vector2(0, 24)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.focus_mode = Control.FOCUS_NONE
-		button.add_theme_font_size_override("font_size", 12)
-		button.add_theme_color_override("font_color", Color(0.82, 0.81, 0.77))
-		button.add_theme_color_override("font_hover_color", Color(1, 1, 1))
+		button.add_theme_font_size_override("font_size", 11)
+		button.add_theme_color_override("font_color", Color(0.8, 0.78, 0.72))
+		button.add_theme_color_override("font_hover_color", Color(0.9, 0.88, 0.8))
 		button.pressed.connect(handler.bind(i))
 		container.add_child(button)
 		buttons.append(button)
 	return buttons
+
+## Tooltip traducido: nombre del punto y sus pros/contras.
+func _choice_tip(key: String) -> String:
+	return "%s\n%s: %s\n%s: %s" % [
+		tr(key + "_NAME"), tr("TIP_ADV"), tr(key + "_ADV"),
+		tr("TIP_DIS"), tr(key + "_DIS"),
+	]
+
 
 func _nearest_option(options: Array, value: float) -> int:
 	var best := 0
@@ -417,18 +513,19 @@ func _build_outfit_buttons() -> void:
 	var outfits: Array = _profile.outfit_list()
 	for i in range(outfits.size()):
 		var item: Dictionary = outfits[i]
+		var outfit_key: String = OUTFIT_KEYS[i] if i < OUTFIT_KEYS.size() else "OUTFIT_1"
 		var button := Button.new()
-		button.text = String(item["name"])
-		button.tooltip_text = String(item["name"])
-		button.custom_minimum_size = Vector2(0, 27)
+		button.text = tr(outfit_key)
+		button.tooltip_text = tr(outfit_key)
+		button.custom_minimum_size = Vector2(0, 25)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.focus_mode = Control.FOCUS_NONE
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		button.add_theme_font_size_override("font_size", 13)
-		button.add_theme_constant_override("h_separation", 7)
-		button.add_theme_color_override("font_color", Color(0.84, 0.83, 0.79))
-		button.add_theme_color_override("font_hover_color", Color(1, 1, 1))
+		button.add_theme_font_size_override("font_size", 12)
+		button.add_theme_constant_override("h_separation", 6)
+		button.add_theme_color_override("font_color", Color(0.82, 0.8, 0.74))
+		button.add_theme_color_override("font_hover_color", Color(0.92, 0.9, 0.82))
 		button.icon = _color_swatch(item["color"])
 		button.pressed.connect(_on_outfit_selected.bind(i + 1))
 		outfit_grid.add_child(button)
@@ -438,11 +535,12 @@ func _build_skin_buttons() -> void:
 	var tones: Array = _profile.skin_tone_list()
 	for i in range(tones.size()):
 		var tone: Dictionary = tones[i]
+		var skin_key: String = SKIN_KEYS[i] if i < SKIN_KEYS.size() else "SKIN_FAIR"
 		var button := Button.new()
-		button.custom_minimum_size = Vector2(34, 26)
+		button.custom_minimum_size = Vector2(30, 24)
 		button.focus_mode = Control.FOCUS_NONE
-		button.tooltip_text = String(tone["name"])
-		var style := _flat_style(tone["tint"], Color(0.16, 0.16, 0.18), 1, 4)
+		button.tooltip_text = tr(skin_key)
+		var style := _flat_style(tone["tint"], Color(0.18, 0.18, 0.16), 1, 0)
 		button.add_theme_stylebox_override("normal", style)
 		button.add_theme_stylebox_override("hover", style)
 		button.add_theme_stylebox_override("pressed", style)
@@ -463,10 +561,10 @@ func _refresh_visual_selection() -> void:
 	for i in range(_skin_styles.size()):
 		var style: StyleBoxFlat = _skin_styles[i]
 		if i == _profile.skin_tone:
-			style.border_color = Color(0.95, 0.78, 0.4, 1.0)
-			style.set_border_width_all(2)
+			style.border_color = Color(0.88, 0.78, 0.52, 1.0)
+			style.set_border_width_all(1)
 		else:
-			style.border_color = Color(0.16, 0.16, 0.18, 1.0)
+			style.border_color = Color(0.24, 0.24, 0.2, 1.0)
 			style.set_border_width_all(1)
 	var weight_index := _nearest_option(WEIGHT_OPTIONS, float(_profile.weight))
 	for i in range(_weight_buttons.size()):
@@ -491,10 +589,10 @@ func _flat_style(bg: Color, border: Color, border_width: int, radius: int) -> St
 	style.border_color = border
 	style.set_border_width_all(border_width)
 	style.set_corner_radius_all(radius)
-	style.content_margin_left = 8
-	style.content_margin_right = 8
-	style.content_margin_top = 4
-	style.content_margin_bottom = 4
+	style.content_margin_left = 6
+	style.content_margin_right = 6
+	style.content_margin_top = 2
+	style.content_margin_bottom = 2
 	return style
 
 func _color_swatch(color: Color) -> ImageTexture:

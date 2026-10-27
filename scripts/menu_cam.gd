@@ -37,6 +37,48 @@ func _ready() -> void:
 	customization.prepare(main_char)
 	customization.start_pressed.connect(_on_customization_start)
 	customization.back_pressed.connect(_on_customization_back)
+	_load_translations()
+	_localize_menu()
+
+
+func _load_translations() -> void:
+	for locale in ["en", "es", "ca", "bg", "de", "fr"]:
+		var path := "res://translations/translations.%s.translation" % locale
+		if not ResourceLoader.exists(path):
+			continue
+		var res := load(path)
+		if res is Translation:
+			TranslationServer.add_translation(res)
+	var config := ConfigFile.new()
+	var locale := "es"
+	if config.load("user://settings.cfg") == OK:
+		locale = String(config.get_value("language", "locale", "es"))
+	TranslationServer.set_locale(locale)
+
+
+func _localize_menu() -> void:
+	var keys := {
+		"play": "MENU_PLAY",
+		"options": "MENU_OPTIONS",
+		"credits": "MENU_CREDITS",
+		"exit": "MENU_EXIT",
+		"volume": "MENU_VOLUME",
+		"language": "MENU_LANGUAGE",
+		"brightness": "MENU_BRIGHTNESS",
+		"back": "MENU_BACK",
+	}
+	var menu := get_node_or_null("CanvasLayer/Menu")
+	if menu == null:
+		return
+	_apply_keys(menu, keys)
+
+
+func _apply_keys(node: Node, keys: Dictionary) -> void:
+	if node is Button and keys.has(node.name):
+		var key: String = keys[node.name]
+		node.text = tr(key)
+	for child in node.get_children():
+		_apply_keys(child, keys)
 
 func trigger_anim_condition(condition: String, duration: float = 0.2) -> void:
 	_cond_seq[condition] = _cond_seq.get(condition, 0) + 1
@@ -127,6 +169,7 @@ func _on_language_pressed() -> void:
 	_refresh_submenu_buttons()
 	refresh_interactive_menus()
 	$CanvasLayer/Menu.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_localize_menu()
 	trigger_anim_condition("language")
 
 func _on_brightness_pressed() -> void:
@@ -139,6 +182,7 @@ func _on_back_pressed() -> void:
 	_at_home = true
 	_refresh_submenu_buttons()
 	refresh_interactive_menus()
+	_localize_menu()
 	h_box_container.visible = true
 	h_box_container_2.visible = false
 	trigger_anim_condition("back")
